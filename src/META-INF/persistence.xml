@@ -9,6 +9,7 @@
 			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/us_map"/>
 			<property name="javax.persistence.jdbc.user" value="root"/>
 			<property name="javax.persistence.jdbc.password" value="jieninan"/>
+			<property name="eclipselink.jdbc.cache-statements" value="false"/>
 		</properties>
 	</persistence-unit>
 </persistence>

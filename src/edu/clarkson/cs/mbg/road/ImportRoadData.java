@@ -2,10 +2,14 @@ package edu.clarkson.cs.mbg.road;
 
 import java.io.FileInputStream;
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
+import javax.persistence.EntityTransaction;
 import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamReader;
 
+import edu.clarkson.cs.mbg.Environment;
 import edu.clarkson.cs.mbg.road.model.Road;
 import edu.clarkson.cs.mbg.road.model.Waypoint;
 
@@ -18,7 +22,9 @@ public class ImportRoadData {
 		XMLStreamReader r = f.createXMLStreamReader(inputStream);
 
 		StateMachine sm = new StateMachine();
-		RoadDao roadDao = new JpaRoadDao();
+
+		List<Road> buffer = new ArrayList<Road>();
+		int threshold = 5000;
 
 		while (r.hasNext()) {
 			if (r.isStartElement()) {
@@ -105,7 +111,17 @@ public class ImportRoadData {
 				String name = r.getName().getLocalPart();
 				if ("Record".equals(name)) {
 					// Save current road
-					roadDao.save(sm.road);
+					buffer.add(sm.road);
+
+					if (buffer.size() >= threshold) {
+						EntityTransaction t = Environment.em.getTransaction();
+						t.begin();
+						for (Road newr : buffer)
+							Environment.em.persist(newr);
+						t.commit();
+						
+						buffer.clear();
+					}
 				}
 				if ("Point".equals(name)) {
 					sm.road.addWaypoint(sm.waypoint);
@@ -115,6 +131,13 @@ public class ImportRoadData {
 		}
 
 		r.close();
+		
+		// Save remaining data
+		EntityTransaction t = Environment.em.getTransaction();
+		t.begin();
+		for (Road newr : buffer)
+			Environment.em.persist(newr);
+		t.commit();
 
 	}
 
