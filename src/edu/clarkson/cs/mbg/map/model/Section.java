@@ -1,21 +1,23 @@
-package edu.clarkson.cs.mbg.road.model;
+package edu.clarkson.cs.mbg.map.model;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.CascadeType;
+import javax.persistence.CollectionTable;
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "road")
-public class Road {
+@Table(name = "road_section")
+public class Section {
 
 	@Id
 	@Column(name = "id")
@@ -28,14 +30,14 @@ public class Road {
 	@Column(name = "name_2")
 	private String name2;
 
-	@Column(name = "route_dir")
-	private String routeDir;
+	@Column(name = "prefix_dir")
+	private String prefixDir;
 
-	@Column(name = "route_type")
-	private String routeType;
+	@Column(name = "prefix_type")
+	private String prefixType;
 
-	@Column(name = "route_num")
-	private String routeNum;
+	@Column(name = "prefix_num")
+	private String prefixNum;
 
 	@Column(name = "street_type")
 	private String streetType;
@@ -64,10 +66,11 @@ public class Road {
 	@Column(name = "shape_length")
 	private BigDecimal shapeLength;
 
-	@OneToMany(mappedBy = "road", cascade = { CascadeType.ALL })
+	@ElementCollection(fetch = FetchType.LAZY)
+	@CollectionTable(name = "road_waypoint", joinColumns = @JoinColumn(name = "road"))
 	private List<Waypoint> waypoints;
 
-	public Road() {
+	public Section() {
 		super();
 		waypoints = new ArrayList<Waypoint>();
 	}
@@ -96,28 +99,28 @@ public class Road {
 		this.name2 = name2;
 	}
 
-	public String getRouteDir() {
-		return routeDir;
+	public String getPrefixDir() {
+		return prefixDir;
 	}
 
-	public void setRouteDir(String routeDir) {
-		this.routeDir = routeDir;
+	public void setPrefixDir(String prefixDir) {
+		this.prefixDir = prefixDir;
 	}
 
-	public String getRouteType() {
-		return routeType;
+	public String getPrefixType() {
+		return prefixType;
 	}
 
-	public void setRouteType(String routeType) {
-		this.routeType = routeType;
+	public void setPrefixType(String prefixType) {
+		this.prefixType = prefixType;
 	}
 
-	public String getRouteNum() {
-		return routeNum;
+	public String getPrefixNum() {
+		return prefixNum;
 	}
 
-	public void setRouteNum(String routeNum) {
-		this.routeNum = routeNum;
+	public void setPrefixNum(String prefixNum) {
+		this.prefixNum = prefixNum;
 	}
 
 	public String getStreetType() {
@@ -197,7 +200,6 @@ public class Road {
 	}
 
 	public void addWaypoint(Waypoint waypoint) {
-		waypoint.setRoad(this);
 		getWaypoints().add(waypoint);
 	}
 

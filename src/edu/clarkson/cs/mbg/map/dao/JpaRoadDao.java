@@ -1,10 +1,10 @@
-package edu.clarkson.cs.mbg.road;
+package edu.clarkson.cs.mbg.map.dao;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 
 import edu.clarkson.cs.mbg.Environment;
-import edu.clarkson.cs.mbg.road.model.Road;
+import edu.clarkson.cs.mbg.map.model.Section;
 
 public class JpaRoadDao implements RoadDao {
 
@@ -12,7 +12,7 @@ public class JpaRoadDao implements RoadDao {
 		return Environment.em;
 	}
 
-	public void save(Road road) {
+	public void save(Section road) {
 		EntityTransaction t = getEm().getTransaction();
 		t.begin();
 

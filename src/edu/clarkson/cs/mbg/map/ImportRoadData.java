@@ -1,4 +1,4 @@
-package edu.clarkson.cs.mbg.road;
+package edu.clarkson.cs.mbg.map;
 
 import java.io.FileInputStream;
 import java.math.BigDecimal;
@@ -10,20 +10,20 @@ import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamReader;
 
 import edu.clarkson.cs.mbg.Environment;
-import edu.clarkson.cs.mbg.road.model.Road;
-import edu.clarkson.cs.mbg.road.model.Waypoint;
+import edu.clarkson.cs.mbg.map.model.Section;
+import edu.clarkson.cs.mbg.map.model.Waypoint;
 
 public class ImportRoadData {
 
 	public static void main(String[] args) throws Exception {
 		FileInputStream inputStream = new FileInputStream(
-				"/home/harper/road.xml");
+				"/home/harper/ResearchData/map-based-geolocation/road/road.xml");
 		XMLInputFactory f = XMLInputFactory.newInstance();
 		XMLStreamReader r = f.createXMLStreamReader(inputStream);
 
 		StateMachine sm = new StateMachine();
 
-		List<Road> buffer = new ArrayList<Road>();
+		List<Section> buffer = new ArrayList<Section>();
 		int threshold = 5000;
 
 		while (r.hasNext()) {
@@ -45,13 +45,13 @@ public class ImportRoadData {
 						sm.road.setName2(r.getElementText());
 						break;
 					case 4: // PREFIX_DIR
-						sm.road.setRouteDir(r.getElementText());
+						sm.road.setPrefixDir(r.getElementText());
 						break;
 					case 5: // PRE_TYPE
-						sm.road.setRouteType(r.getElementText());
+						sm.road.setPrefixType(r.getElementText());
 						break;
 					case 6: // NAME
-						sm.road.setRouteNum(r.getElementText());
+						sm.road.setPrefixNum(r.getElementText());
 						break;
 					case 7: // STREET_TYP
 						sm.road.setStreetType(r.getElementText());
@@ -116,7 +116,7 @@ public class ImportRoadData {
 					if (buffer.size() >= threshold) {
 						EntityTransaction t = Environment.em.getTransaction();
 						t.begin();
-						for (Road newr : buffer)
+						for (Section newr : buffer)
 							Environment.em.persist(newr);
 						t.commit();
 						
@@ -135,7 +135,7 @@ public class ImportRoadData {
 		// Save remaining data
 		EntityTransaction t = Environment.em.getTransaction();
 		t.begin();
-		for (Road newr : buffer)
+		for (Section newr : buffer)
 			Environment.em.persist(newr);
 		t.commit();
 
@@ -145,12 +145,12 @@ public class ImportRoadData {
 
 		int fieldIndex;
 
-		Road road;
+		Section road;
 
 		Waypoint waypoint;
 
 		void reset() {
-			road = new Road();
+			road = new Section();
 			fieldIndex = 0;
 		}
 
