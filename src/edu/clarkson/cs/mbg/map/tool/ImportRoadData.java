@@ -1,15 +1,16 @@
-package edu.clarkson.cs.mbg.map;
+package edu.clarkson.cs.mbg.map.tool;
 
 import java.io.FileInputStream;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamReader;
 
-import edu.clarkson.cs.mbg.Environment;
+import edu.clarkson.cs.mbg.common.Environment;
 import edu.clarkson.cs.mbg.map.model.Section;
 import edu.clarkson.cs.mbg.map.model.Waypoint;
 
@@ -25,6 +26,8 @@ public class ImportRoadData {
 
 		List<Section> buffer = new ArrayList<Section>();
 		int threshold = 5000;
+
+		EntityManager em = Environment.getEnvironment().getEntityManager();
 
 		while (r.hasNext()) {
 			if (r.isStartElement()) {
@@ -114,12 +117,12 @@ public class ImportRoadData {
 					buffer.add(sm.road);
 
 					if (buffer.size() >= threshold) {
-						EntityTransaction t = Environment.em.getTransaction();
+						EntityTransaction t = em.getTransaction();
 						t.begin();
 						for (Section newr : buffer)
-							Environment.em.persist(newr);
+							em.persist(newr);
 						t.commit();
-						
+
 						buffer.clear();
 					}
 				}
@@ -131,12 +134,12 @@ public class ImportRoadData {
 		}
 
 		r.close();
-		
+
 		// Save remaining data
-		EntityTransaction t = Environment.em.getTransaction();
+		EntityTransaction t = em.getTransaction();
 		t.begin();
 		for (Section newr : buffer)
-			Environment.em.persist(newr);
+			em.persist(newr);
 		t.commit();
 
 	}

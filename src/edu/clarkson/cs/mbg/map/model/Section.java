@@ -15,9 +15,11 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Table;
 
+import edu.clarkson.cs.mbg.common.EntityObject;
+
 @Entity
 @Table(name = "road_section")
-public class Section {
+public class Section implements EntityObject {
 
 	@Id
 	@Column(name = "id")

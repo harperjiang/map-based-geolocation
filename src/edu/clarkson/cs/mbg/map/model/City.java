@@ -9,14 +9,16 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import edu.clarkson.cs.mbg.common.EntityObject;
+
 @Entity
 @Table(name = "city")
-public class City {
+public class City implements EntityObject {
 
 	@Id
 	@Column(name = "id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private String id;
+	private Integer id;
 
 	@Column(name = "feature")
 	private String feature;
@@ -46,11 +48,11 @@ public class City {
 		super();
 	}
 
-	public String getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 

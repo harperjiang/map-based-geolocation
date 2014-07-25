@@ -1,15 +1,16 @@
-package edu.clarkson.cs.mbg.map;
+package edu.clarkson.cs.mbg.map.tool;
 
 import java.io.FileInputStream;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamReader;
 
-import edu.clarkson.cs.mbg.Environment;
+import edu.clarkson.cs.mbg.common.Environment;
 import edu.clarkson.cs.mbg.map.model.City;
 import edu.clarkson.cs.mbg.map.model.Waypoint;
 
@@ -25,6 +26,8 @@ public class ImportCityData {
 
 		List<City> buffer = new ArrayList<City>();
 		int threshold = 5000;
+
+		EntityManager em = Environment.getEnvironment().getEntityManager();
 
 		while (r.hasNext()) {
 			if (r.isStartElement()) {
@@ -85,12 +88,12 @@ public class ImportCityData {
 					sm.nextField();
 				}
 				if ("X".equals(name)) {
-//					BigDecimal xval = new BigDecimal(r.getElementText());
-//					sm.city.setRefX(xval);
+					// BigDecimal xval = new BigDecimal(r.getElementText());
+					// sm.city.setRefX(xval);
 				}
 				if ("Y".equals(name)) {
-//					BigDecimal yval = new BigDecimal(r.getElementText());
-//					sm.city.setRefY(yval);
+					// BigDecimal yval = new BigDecimal(r.getElementText());
+					// sm.city.setRefY(yval);
 				}
 			}
 			if (r.isEndElement()) {
@@ -100,10 +103,10 @@ public class ImportCityData {
 					buffer.add(sm.city);
 
 					if (buffer.size() >= threshold) {
-						EntityTransaction t = Environment.em.getTransaction();
+						EntityTransaction t = em.getTransaction();
 						t.begin();
 						for (City newr : buffer)
-							Environment.em.persist(newr);
+							em.persist(newr);
 						t.commit();
 
 						buffer.clear();
@@ -116,10 +119,10 @@ public class ImportCityData {
 		r.close();
 
 		// Save remaining data
-		EntityTransaction t = Environment.em.getTransaction();
+		EntityTransaction t = em.getTransaction();
 		t.begin();
 		for (City newr : buffer)
-			Environment.em.persist(newr);
+			em.persist(newr);
 		t.commit();
 
 	}
