@@ -9,7 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import edu.clarkson.cs.mbg.common.EntityObject;
+import edu.clarkson.cs.persistence.EntityObject;
 
 @Entity
 @Table(name = "city")
