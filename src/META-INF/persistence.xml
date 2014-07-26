@@ -4,6 +4,7 @@
 		<class>edu.clarkson.cs.mbg.map.model.Section</class>
 		<class>edu.clarkson.cs.mbg.map.model.Waypoint</class>
 		<class>edu.clarkson.cs.mbg.map.model.City</class>
+		<class>edu.clarkson.cs.mbg.tracedata.model.TraceData</class>
 		<properties>
 			<property name="eclipselink.jdbc.batch-writing" value="JDBC"/>
 			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
