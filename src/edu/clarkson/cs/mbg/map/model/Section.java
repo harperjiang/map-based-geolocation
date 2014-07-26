@@ -202,6 +202,7 @@ public class Section implements EntityObject {
 	}
 
 	public void addWaypoint(Waypoint waypoint) {
+		waypoint.setSequence(getWaypoints().size());
 		getWaypoints().add(waypoint);
 	}
 

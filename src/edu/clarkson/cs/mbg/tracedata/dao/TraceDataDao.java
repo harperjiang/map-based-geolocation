@@ -1,4 +1,4 @@
-package edu.clarkson.cs.mbg.tracedata.api;
+package edu.clarkson.cs.mbg.tracedata.dao;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;

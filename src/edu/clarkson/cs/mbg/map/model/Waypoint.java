@@ -14,6 +14,9 @@ public class Waypoint {
 	@Column(name = "point_y")
 	private BigDecimal pointY;
 
+	@Column(name = "sequence")
+	private int sequence;
+
 	public BigDecimal getPointX() {
 		return pointX;
 	}
@@ -28,6 +31,14 @@ public class Waypoint {
 
 	public void setPointY(BigDecimal pointY) {
 		this.pointY = pointY;
+	}
+
+	public int getSequence() {
+		return sequence;
+	}
+
+	public void setSequence(int sequence) {
+		this.sequence = sequence;
 	}
 
 }

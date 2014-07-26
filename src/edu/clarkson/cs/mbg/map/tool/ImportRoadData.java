@@ -18,7 +18,7 @@ public class ImportRoadData {
 
 	public static void main(String[] args) throws Exception {
 		FileInputStream inputStream = new FileInputStream(
-				"/home/harper/ResearchData/map-based-geolocation/road/road.xml");
+				"/home/harper/ResearchData/map-based-geolocation/road/data.xml");
 		XMLInputFactory f = XMLInputFactory.newInstance();
 		XMLStreamReader r = f.createXMLStreamReader(inputStream);
 
