@@ -98,6 +98,18 @@ public class ImportRoadData {
 
 					sm.nextField();
 				}
+				if ("XMax".equals(name) && sm.road != null) {
+					sm.road.setLongMax(new BigDecimal(r.getElementText()));
+				}
+				if ("YMax".equals(name) && sm.road != null) {
+					sm.road.setLatMax(new BigDecimal(r.getElementText()));
+				}
+				if ("XMin".equals(name) && sm.road != null) {
+					sm.road.setLongMin(new BigDecimal(r.getElementText()));
+				}
+				if ("YMin".equals(name) && sm.road != null) {
+					sm.road.setLatMin(new BigDecimal(r.getElementText()));
+				}
 				if ("Point".equals(name)) {
 					sm.waypoint = new Waypoint();
 				}

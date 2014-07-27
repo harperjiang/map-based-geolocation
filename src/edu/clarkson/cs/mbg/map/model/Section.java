@@ -13,6 +13,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OrderBy;
 import javax.persistence.Table;
 
 import edu.clarkson.cs.persistence.EntityObject;
@@ -70,7 +71,20 @@ public class Section implements EntityObject {
 
 	@ElementCollection(fetch = FetchType.LAZY)
 	@CollectionTable(name = "road_waypoint", joinColumns = @JoinColumn(name = "road"))
+	@OrderBy("sequence ASC")
 	private List<Waypoint> waypoints;
+
+	@Column(name = "lat_max")
+	private BigDecimal latMax;
+
+	@Column(name = "lat_min")
+	private BigDecimal latMin;
+
+	@Column(name = "long_max")
+	private BigDecimal longMax;
+
+	@Column(name = "long_min")
+	private BigDecimal longMin;
 
 	public Section() {
 		super();
@@ -204,6 +218,38 @@ public class Section implements EntityObject {
 	public void addWaypoint(Waypoint waypoint) {
 		waypoint.setSequence(getWaypoints().size());
 		getWaypoints().add(waypoint);
+	}
+
+	public BigDecimal getLatMax() {
+		return latMax;
+	}
+
+	public void setLatMax(BigDecimal latMax) {
+		this.latMax = latMax;
+	}
+
+	public BigDecimal getLatMin() {
+		return latMin;
+	}
+
+	public void setLatMin(BigDecimal latMin) {
+		this.latMin = latMin;
+	}
+
+	public BigDecimal getLongMax() {
+		return longMax;
+	}
+
+	public void setLongMax(BigDecimal longMax) {
+		this.longMax = longMax;
+	}
+
+	public BigDecimal getLongMin() {
+		return longMin;
+	}
+
+	public void setLongMin(BigDecimal longMin) {
+		this.longMin = longMin;
 	}
 
 }
