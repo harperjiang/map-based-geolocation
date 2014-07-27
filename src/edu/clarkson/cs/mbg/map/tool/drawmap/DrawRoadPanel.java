@@ -14,7 +14,7 @@ import edu.clarkson.cs.mbg.geo.GeoPoint;
 
 public class DrawRoadPanel extends JPanel {
 
-	private static BigDecimal factor = new BigDecimal(100000);
+	private BigDecimal scale;
 
 	List<GeoPoint> drawPoints;
 
@@ -28,42 +28,41 @@ public class DrawRoadPanel extends JPanel {
 	 */
 	private static final long serialVersionUID = -2188675489303787697L;
 
-	public void setDrawPoints(List<GeoPoint> drawPoints) {
+	public void setDrawPoints(List<GeoPoint> drawPoints, GeoPoint min,
+			GeoPoint max) {
 		this.drawPoints = drawPoints;
-	}
-
-	public void setDrawBounds(GeoPoint min, GeoPoint max) {
 		this.min = min;
 		this.max = max;
+		processData();
 	}
 
 	protected void processData() {
-		if (!processed) {
-			for (GeoPoint point : drawPoints) {
-				point.latitude = point.latitude.subtract(min.latitude)
-						.multiply(factor);
-				point.longitude = point.longitude.subtract(min.longitude)
-						.multiply(factor);
-			}
-
-			max.latitude = max.latitude.subtract(min.latitude).multiply(factor);
-			max.longitude = max.longitude.subtract(min.longitude).multiply(
-					factor);
-
-			min.latitude = BigDecimal.ZERO;
-			min.longitude = BigDecimal.ZERO;
+		for (GeoPoint point : drawPoints) {
+			point.latitude = point.latitude.subtract(min.latitude).multiply(
+					scale);
+			point.longitude = point.longitude.subtract(min.longitude).multiply(
+					scale);
 		}
+
+		max.latitude = max.latitude.subtract(min.latitude).multiply(scale);
+		max.longitude = max.longitude.subtract(min.longitude).multiply(scale);
+
+		min.latitude = BigDecimal.ZERO;
+		min.longitude = BigDecimal.ZERO;
+
 		processed = true;
 	}
 
 	@Override
 	public void paint(Graphics g) {
+		super.paint(g);
+		if (!processed) {
+			return;
+		}
 		Graphics2D g2d = (Graphics2D) g;
 
 		g2d.setColor(Color.red);
 		g2d.setStroke(new BasicStroke(2.5f));
-
-		processData();
 
 		// Convert to upside-down
 		g2d.setTransform(new AffineTransform(1, 0, 0, -1, 500 - max.longitude
@@ -79,4 +78,13 @@ public class DrawRoadPanel extends JPanel {
 			previous = point;
 		}
 	}
+
+	public BigDecimal getScale() {
+		return scale;
+	}
+
+	public void setScale(BigDecimal scale) {
+		this.scale = scale;
+	}
+
 }
