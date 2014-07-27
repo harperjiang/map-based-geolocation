@@ -4,6 +4,7 @@ import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.geom.AffineTransform;
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -64,7 +65,10 @@ public class DrawRoadPanel extends JPanel {
 
 		processData();
 
-		// TODO g2d.translate
+		// Convert to upside-down
+		g2d.setTransform(new AffineTransform(1, 0, 0, -1, 500 - max.longitude
+				.intValue() / 2, 500 + max.latitude.intValue() / 2));
+
 		GeoPoint previous = null;
 		for (GeoPoint point : drawPoints) {
 			if (previous != null) {

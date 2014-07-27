@@ -25,7 +25,7 @@ public class DrawRoadDirection {
 		JFrame frame = new JFrame();
 		frame.setTitle("Draw Road Direction");
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		frame.setSize(800, 600);
+		frame.setSize(1000, 1000);
 
 		frame.getContentPane().setLayout(new BorderLayout());
 
