@@ -15,9 +15,9 @@ import edu.clarkson.cs.mbg.tracedata.model.TraceData;
 public class Main {
 
 	public static void main(String[] args) {
-
+		new MBGContextSet().apply();
 		// TODO Use RipeAtlas to create measurement
-		int measurementId = 0;
+		int measurementId = 1708286;
 
 		TraceDataService tdService = BeanContext.get().get("traceDataService");
 

@@ -6,6 +6,7 @@ import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.math.BigDecimal;
+import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,11 +37,13 @@ public class DrawRoadFrame extends JFrame {
 
 	private JTextField scaleField;
 
+	private JLabel infoLabel;
+
 	public DrawRoadFrame() {
 		super();
 		setTitle("Draw Road Direction");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setSize(1000, 1050);
+		setSize(1000, 1100);
 
 		getContentPane().setLayout(new BorderLayout());
 
@@ -78,6 +81,10 @@ public class DrawRoadFrame extends JFrame {
 
 							SwingUtilities.invokeLater(new Runnable() {
 								public void run() {
+									infoLabel.setText(MessageFormat.format(
+											"{0}/{1} in {2}", road.getName(),
+											road.getName2(), road.getState()));
+
 									roadPanel.setDrawPoints(
 											points,
 											new GeoPoint(road.getLatMin(), road
@@ -93,7 +100,10 @@ public class DrawRoadFrame extends JFrame {
 			}
 		});
 		controlPanel.add(drawButton);
-		getContentPane().add(controlPanel,BorderLayout.SOUTH);
+		getContentPane().add(controlPanel, BorderLayout.SOUTH);
+
+		infoLabel = new JLabel();
+		getContentPane().add(infoLabel, BorderLayout.NORTH);
 		setVisible(true);
 	}
 

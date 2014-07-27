@@ -4,7 +4,12 @@ import java.math.BigDecimal;
 
 public class GeoDimension {
 
-	public BigDecimal width;
+	public BigDecimal latRange;
 
-	public BigDecimal height;
+	public BigDecimal longRange;
+
+	public GeoDimension(BigDecimal lat, BigDecimal longi) {
+		this.latRange = lat;
+		this.longRange = longi;
+	}
 }
