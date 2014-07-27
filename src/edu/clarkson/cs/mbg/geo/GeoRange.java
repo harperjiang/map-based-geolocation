@@ -1,5 +1,7 @@
 package edu.clarkson.cs.mbg.geo;
 
+import java.text.MessageFormat;
+
 public class GeoRange {
 
 	public GeoPoint start;
@@ -10,5 +12,10 @@ public class GeoRange {
 		super();
 		this.start = start;
 		this.size = size;
+	}
+
+	@Override
+	public String toString() {
+		return MessageFormat.format("{0},{1}", start, size);
 	}
 }

@@ -4,7 +4,8 @@ import java.math.BigDecimal;
 
 public class DistanceUtils {
 
-	private static final BigDecimal factor = new BigDecimal(10000);
+	// 10 km per ms
+	private static final BigDecimal factor = new BigDecimal(30000);
 
 	/**
 	 * From delay(millisecond) to distance(meter),

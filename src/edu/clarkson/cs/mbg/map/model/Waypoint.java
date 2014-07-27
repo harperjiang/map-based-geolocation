@@ -5,6 +5,8 @@ import java.math.BigDecimal;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
+import edu.clarkson.cs.mbg.geo.GeoPoint;
+
 @Embeddable
 public class Waypoint {
 
@@ -39,6 +41,10 @@ public class Waypoint {
 
 	public void setSequence(int sequence) {
 		this.sequence = sequence;
+	}
+
+	public GeoPoint asGeoPoint() {
+		return new GeoPoint(getPointY(), getPointX());
 	}
 
 }
