@@ -27,4 +27,11 @@ public class GeoUtilsTest {
 		assertTrue(range.size.latRange.compareTo(BigDecimal.ZERO) > 0);
 		assertTrue(range.size.longRange.compareTo(BigDecimal.ZERO) > 0);
 	}
+
+	@Test
+	public void testAngle() {
+		Double angle = GeoUtils
+				.angle(new GeoPoint(0, 0), new GeoPoint(-0.1, 1));
+		assertTrue(angle > 3 * Math.PI / 2 && angle < 2 * Math.PI);
+	}
 }

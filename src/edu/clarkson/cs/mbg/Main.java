@@ -31,7 +31,8 @@ public class Main {
 		mapSearcher.setRoadDao(roadDao);
 
 		for (Entry<Probe, List<TraceData>> entry : result.entrySet()) {
-			// TODO A single point lead too many possibilities
+			// TODO A single point lead to too many possibilities. So I choose
+			// to only look at traceroutes that provide enough information
 			if (entry.getValue().size() > 3) {
 				GeoPoint startPoint = new GeoPoint(
 						entry.getKey().getLatitude(), entry.getKey()

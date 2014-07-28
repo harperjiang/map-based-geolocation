@@ -14,19 +14,35 @@ public class GeoUtils {
 	 * @param third
 	 * @return cosine of angle value
 	 */
-	public static Double angle(GeoPoint first, GeoPoint second, GeoPoint third) {
+	public static Double angleInCos(GeoPoint first, GeoPoint second,
+			GeoPoint third, GeoPoint forth) {
 		Double v1x = second.longitude.doubleValue()
 				- first.longitude.doubleValue();
 		Double v1y = second.latitude.doubleValue()
 				- first.latitude.doubleValue();
-		Double v2x = third.longitude.doubleValue()
-				- second.longitude.doubleValue();
-		Double v2y = third.longitude.doubleValue()
-				- second.longitude.doubleValue();
+		Double v2x = forth.longitude.doubleValue()
+				- third.longitude.doubleValue();
+		Double v2y = forth.longitude.doubleValue()
+				- third.longitude.doubleValue();
 
 		return (v1x * v2x + v1y * v2y)
 				/ (Math.sqrt(v1x * v1x + v1y * v1y) * Math.sqrt(v2x * v2x + v2y
 						* v2y));
+	}
+
+	/**
+	 * 
+	 * @param center
+	 * @param point
+	 * @return angle in radius
+	 */
+	public static Double angle(GeoPoint center, GeoPoint point) {
+		Double x = point.longitude.subtract(center.longitude).doubleValue();
+		Double y = point.latitude.subtract(center.latitude).doubleValue();
+		Double radius = Math.acos(x / Math.sqrt(x * x + y * y));
+		if (y < 0)
+			radius = 2 * Math.PI - radius;
+		return radius;
 	}
 
 	/**
@@ -103,4 +119,5 @@ public class GeoUtils {
 		return new BigDecimal(Math.sqrt(latDist.pow(2).doubleValue()
 				+ longDist.pow(2).doubleValue()));
 	}
+
 }

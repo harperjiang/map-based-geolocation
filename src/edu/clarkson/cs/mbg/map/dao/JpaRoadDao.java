@@ -11,6 +11,8 @@ public class JpaRoadDao extends JpaEntityDao<Section> implements RoadDao {
 
 	@Override
 	public List<Section> getSectionInRange(GeoRange range) {
+		// Only go for big road (interstate/state route/us route)
+		// TODO Is this assumption correct?
 		String sql = "select r from Section r "
 				+ "where r.prefixType in (:a,:b,:c) "
 				+ "and (r.latMax > :range_lat_min and r.latMin < :range_lat_max) "

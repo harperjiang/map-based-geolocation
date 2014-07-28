@@ -70,7 +70,7 @@ public class Section implements EntityObject {
 	private BigDecimal shapeLength;
 
 	@ElementCollection(fetch = FetchType.LAZY)
-	@CollectionTable(name = "road_waypoint", joinColumns = @JoinColumn(name = "road"))
+	@CollectionTable(name = "road_waypoint_simple", joinColumns = @JoinColumn(name = "road"))
 	@OrderBy("sequence ASC")
 	private List<Waypoint> waypoints;
 
