@@ -24,23 +24,25 @@ public class TraceDataService extends DefaultHttpService {
 
 	private ProbeAccess probeAccess;
 
-	public Map<Probe, List<TraceData>> loadMeasurementResult(int id) {
-		Map<Probe, List<TraceData>> retval = new HashMap<Probe, List<TraceData>>();
+	public Map<Probe, List<TracerouteData>> loadMeasurementResult(int id) {
+		Map<Probe, List<TracerouteData>> retval = new HashMap<Probe, List<TracerouteData>>();
 
 		MeasurementResultResponse resultResp = execute(measurementAccess
 				.result(String.valueOf(id)));
 		List<MeasurementResult> results = resultResp.getResult();
 		for (MeasurementResult result : results) {
 
-			List<TraceData> sections = new ArrayList<TraceData>();
+			List<TracerouteData> sections = new ArrayList<TracerouteData>();
 
 			for (Output output : result.getOutputs()) {
 				if (validStep(output)) {
 					TracerouteOutput to = (TracerouteOutput) output;
 					TracerouteData summary = summarize(to.getData());
+					
+					sections.add(summary);
+					/*
 					TraceData section = new TraceData();
 					section.setToIp(summary.getFrom());
-
 					TraceData validStart = validStart(sections, summary);
 
 					if (validStart == null) {
@@ -54,6 +56,7 @@ public class TraceDataService extends DefaultHttpService {
 					section.setRttSource(summary.getRoundTripTime());
 					section.setSourceIp(result.getFrom());
 					sections.add(section);
+					*/
 				}
 			}
 			retval.put(execute(probeAccess.get(result.getProbeId()))
