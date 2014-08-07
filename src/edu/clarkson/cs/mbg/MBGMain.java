@@ -1,10 +1,13 @@
 package edu.clarkson.cs.mbg;
 
+import java.awt.Point;
 import java.math.BigDecimal;
-import java.text.MessageFormat;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import edu.clarkson.cs.clientlib.csdp.CSDPException;
 import edu.clarkson.cs.clientlib.lang.BeanContext;
 import edu.clarkson.cs.clientlib.ripeatlas.model.Probe;
 import edu.clarkson.cs.clientlib.ripeatlas.model.TracerouteOutput.TracerouteData;
@@ -13,11 +16,19 @@ import edu.clarkson.cs.mbg.geo.GeoPoint;
 import edu.clarkson.cs.mbg.geo.GeoRange;
 import edu.clarkson.cs.mbg.geo.GeoUtils;
 import edu.clarkson.cs.mbg.map.DistanceUtils;
+import edu.clarkson.cs.mbg.opt.BoundarySearcher;
+import edu.clarkson.cs.mbg.opt.BoundarySearcher.Behavior;
 import edu.clarkson.cs.mbg.opt.DistConstraint;
 import edu.clarkson.cs.mbg.opt.SinglePointEstimator;
+import edu.clarkson.cs.mbg.tool.drawrange.DrawPoint;
+import edu.clarkson.cs.mbg.tool.drawrange.DrawRangeFrame;
 import edu.clarkson.cs.mbg.tracedata.TraceDataService;
 
-public class Main {
+public class MBGMain {
+
+	// This is the US territory range
+	static final GeoRange territory = new GeoRange(new GeoPoint(24, -125),
+			new GeoDimension(26, 59));
 
 	public static void main(String[] args) {
 		System.loadLibrary("jcsdp");
@@ -26,16 +37,14 @@ public class Main {
 		TraceDataService tdService = BeanContext.get().get("traceDataService");
 
 		// TODO Use RipeAtlas to create measurement
-		int measurementId = 1717329;
+		int measurementId = 1717512;
 
 		Map<Probe, TracerouteData> tracedata = tdService
 				.loadMeasurementResult(measurementId);
 
-		SinglePointEstimator est = new SinglePointEstimator();
+		final SinglePointEstimator est = new SinglePointEstimator();
 
-		// This is the US territory range
-		est.setRange(new GeoRange(new GeoPoint(24, -125), new GeoDimension(26,
-				59)));
+		est.setRange(territory);
 
 		for (Entry<Probe, TracerouteData> entry : tracedata.entrySet()) {
 			GeoPoint point = new GeoPoint(entry.getKey().getLatitude(), entry
@@ -49,30 +58,19 @@ public class Main {
 			BigDecimal singleTrip = data.getRoundTripTime().divide(
 					new BigDecimal("2"), 4, BigDecimal.ROUND_HALF_UP);
 
-			System.err
-					.println(MessageFormat.format("Against point {0}", point));
-			System.err.println(MessageFormat.format(
-					"Single Trip time is {0} ms", singleTrip));
 			BigDecimal upperbound = DistanceUtils.upperbound(singleTrip);
 			BigDecimal lowerbound = DistanceUtils.lowerbound(singleTrip);
 
 			BigDecimal geoupper = geodiff(point, upperbound).pow(2);
 			BigDecimal geolower = geodiff(point, lowerbound).pow(2);
 
-			System.err
-					.println(MessageFormat
-							.format("Estimated Upper bound is {0} degree^2, lowerbound is {1} degree^2",
-									geoupper, geolower));
 			DistConstraint d = new DistConstraint(point, null, geoupper,
 					geolower);
 			est.addConstraint(d);
 		}
 		// This is the initial points
 		GeoPoint result = est.solve();
-		
-		// Search for boundaries
-		
-		
+
 		return;
 	}
 
@@ -81,5 +79,57 @@ public class Main {
 		BigDecimal longdelta = GeoUtils.distanceToLong(distance, near.latitude);
 		return latdelta.add(longdelta).divide(new BigDecimal("2"), 5,
 				BigDecimal.ROUND_HALF_UP);
+	}
+
+	protected static void searchBoundary(final SinglePointEstimator est,
+			final GeoPoint result) {
+		// Search for boundaries
+		BoundarySearcher<GeoPoint> boundarySearcher = new BoundarySearcher<GeoPoint>(
+				new Behavior<GeoPoint>() {
+
+					@Override
+					public List<GeoPoint> expand(GeoPoint current) {
+						List<GeoPoint> res = new ArrayList<GeoPoint>();
+						res.add(new GeoPoint(current.latitude
+								.add(BigDecimal.ONE), current.longitude));
+						res.add(new GeoPoint(current.latitude,
+								current.longitude.add(BigDecimal.ONE)));
+						res.add(new GeoPoint(current.latitude
+								.subtract(BigDecimal.ONE), current.longitude));
+						res.add(new GeoPoint(current.latitude,
+								current.longitude.subtract(BigDecimal.ONE)));
+						return res;
+					}
+
+					@Override
+					public boolean test(GeoPoint point) {
+						GeoRange newRange = GeoUtils.overlap(new GeoRange(
+								point, new GeoDimension(1, 1)), territory);
+						if (null == newRange)
+							return false;
+						est.setRange(newRange);
+						try {
+							est.solve();
+							return true;
+						} catch (CSDPException e) {
+							return false;
+						}
+					}
+
+				});
+		boundarySearcher.setStartPoint(new GeoPoint(result.latitude.setScale(0,
+				BigDecimal.ROUND_FLOOR), result.longitude.setScale(0,
+				BigDecimal.ROUND_FLOOR)));
+		boundarySearcher.search();
+
+		DrawRangeFrame frame = new DrawRangeFrame();
+		frame.setVisible(false);
+		for (GeoPoint boundary : boundarySearcher.getBoundary()) {
+			frame.getDrPanel()
+					.getItems()
+					.add(new DrawPoint(new Point(boundary.longitude.intValue(),
+							boundary.latitude.intValue())));
+		}
+		frame.setVisible(true);
 	}
 }

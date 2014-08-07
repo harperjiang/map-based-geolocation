@@ -10,7 +10,7 @@ public class DistanceUtils {
 	private static final BigDecimal upperFactor = new BigDecimal("100000");
 
 	// 20 km per ms
-	private static final BigDecimal lowerFactor = new BigDecimal("20000");
+	private static final BigDecimal lowerFactor = new BigDecimal("30000");
 //	private static final BigDecimal lowerFactor = new BigDecimal("2000");
 
 	/**

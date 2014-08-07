@@ -11,15 +11,27 @@ public class DrawRangeFrame extends JFrame {
 	 */
 	private static final long serialVersionUID = 6440957940941695242L;
 
+	private DrawRangePanel drPanel;
+
 	public DrawRangeFrame() {
 		super();
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setTitle("Draw Range");
 		setSize(1000, 1000);
 
 		setLayout(new BorderLayout());
 
-		add(new DrawRangePanel(), BorderLayout.CENTER);
+		drPanel = new DrawRangePanel();
+		add(drPanel, BorderLayout.CENTER);
 
 		setVisible(true);
+	}
+
+	public DrawRangePanel getDrPanel() {
+		return drPanel;
+	}
+
+	public static void main(String[] args) {
+		new DrawRangeFrame();
 	}
 }

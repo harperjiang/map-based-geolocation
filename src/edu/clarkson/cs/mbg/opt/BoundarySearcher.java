@@ -19,6 +19,7 @@ public class BoundarySearcher<T> {
 		this.behavior = behavior;
 		this.searched = new HashSet<T>();
 		this.boundary = new ArrayList<T>();
+		this.toExpand = new ArrayList<T>();
 	}
 
 	public void setStartPoint(T start) {
@@ -33,7 +34,7 @@ public class BoundarySearcher<T> {
 	public void search() {
 		while (!toExpand.isEmpty()) {
 			T next = toExpand.remove(0);
-			List<T> following = behavior.expand(this, next);
+			List<T> following = behavior.expand(next);
 			List<T> newsearch = new ArrayList<T>();
 			List<T> passed = new ArrayList<T>();
 
@@ -48,7 +49,7 @@ public class BoundarySearcher<T> {
 				}
 				searched.add(test);
 			}
-			// All new points passed test
+			// If all new points passed test, the boundary is expanded
 			if (passed.size() == newsearch.size()) {
 				boundary.remove(next);
 			}
@@ -59,7 +60,7 @@ public class BoundarySearcher<T> {
 
 	public static interface Behavior<T> {
 
-		public List<T> expand(BoundarySearcher<T> searcher, T current);
+		public List<T> expand(T current);
 
 		public boolean test(T point);
 	}

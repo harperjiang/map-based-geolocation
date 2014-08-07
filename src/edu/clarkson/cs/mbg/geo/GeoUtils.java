@@ -93,8 +93,7 @@ public class GeoUtils {
 	 * @param lat
 	 * @return
 	 */
-	public static BigDecimal distanceToLong(BigDecimal distance,
-			BigDecimal lat) {
+	public static BigDecimal distanceToLong(BigDecimal distance, BigDecimal lat) {
 		BigDecimal factor = new BigDecimal(Math.PI * 6378137
 				* Math.cos(Math.toRadians(lat.doubleValue())) / 180).abs();
 		return distance.divide(factor, 5, BigDecimal.ROUND_HALF_UP);
@@ -120,6 +119,33 @@ public class GeoUtils {
 				a.longitude.subtract(b.longitude)).abs();
 		return new BigDecimal(Math.sqrt(latDist.pow(2).doubleValue()
 				+ longDist.pow(2).doubleValue()));
+	}
+
+	public static GeoRange overlap(GeoRange a, GeoRange b) {
+		GeoPoint newpoint = new GeoPoint(
+				max(a.start.latitude, b.start.latitude), max(a.start.longitude,
+						b.start.longitude));
+		GeoDimension newdim = new GeoDimension(min(
+				a.start.latitude.add(a.size.latRange).subtract(
+						newpoint.latitude),
+				b.start.latitude.add(b.size.latRange).subtract(
+						newpoint.latitude)), min(
+				a.start.longitude.add(a.size.longRange).subtract(
+						newpoint.longitude),
+				b.start.longitude.add(b.size.longRange).subtract(
+						newpoint.longitude)));
+		if (newdim.latRange.compareTo(BigDecimal.ZERO) < 0
+				|| newdim.longRange.compareTo(BigDecimal.ZERO) < 0)
+			return null;
+		return new GeoRange(newpoint, newdim);
+	}
+
+	public static BigDecimal max(BigDecimal a, BigDecimal b) {
+		return a.compareTo(b) > 0 ? a : b;
+	}
+
+	public static BigDecimal min(BigDecimal a, BigDecimal b) {
+		return a.compareTo(b) < 0 ? a : b;
 	}
 
 }
