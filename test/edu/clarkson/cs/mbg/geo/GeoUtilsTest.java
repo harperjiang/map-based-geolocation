@@ -18,6 +18,13 @@ public class GeoUtilsTest {
 	public void testDistanceToLong() {
 		assertTrue(Math.abs(GeoUtils.distanceToLong(new BigDecimal("111320"),
 				new BigDecimal(0)).doubleValue() - 1) < 0.001);
+
+		assertTrue(Math.abs(GeoUtils.distanceToLong(new BigDecimal("107550"),
+				new BigDecimal(15)).doubleValue() - 1) < 0.001);
+		assertTrue(Math.abs(GeoUtils.distanceToLong(new BigDecimal("96486"),
+				new BigDecimal(30)).doubleValue() - 1) < 0.001);
+		assertTrue(Math.abs(GeoUtils.distanceToLong(new BigDecimal("78847"),
+				new BigDecimal(45)).doubleValue() - 1) < 0.01);
 	}
 
 	@Test

@@ -1,4 +1,4 @@
-package edu.clarkson.cs.mbg.map.tool.drawmap;
+package edu.clarkson.cs.mbg.tool.drawmap;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;

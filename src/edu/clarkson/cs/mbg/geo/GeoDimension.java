@@ -9,9 +9,9 @@ public class GeoDimension {
 
 	public BigDecimal longRange;
 
-	public GeoDimension(BigDecimal lat, BigDecimal longi) {
-		this.latRange = lat;
-		this.longRange = longi;
+	public GeoDimension(Number lat, Number longi) {
+		this.latRange = new BigDecimal(String.valueOf(lat));
+		this.longRange = new BigDecimal(String.valueOf(longi));
 	}
 
 	@Override

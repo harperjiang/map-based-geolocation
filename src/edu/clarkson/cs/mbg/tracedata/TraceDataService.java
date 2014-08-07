@@ -24,43 +24,26 @@ public class TraceDataService extends DefaultHttpService {
 
 	private ProbeAccess probeAccess;
 
-	public Map<Probe, List<TracerouteData>> loadMeasurementResult(int id) {
-		Map<Probe, List<TracerouteData>> retval = new HashMap<Probe, List<TracerouteData>>();
+	public Map<Probe, TracerouteData> loadMeasurementResult(int id) {
+		Map<Probe, TracerouteData> retval = new HashMap<Probe, TracerouteData>();
 
 		MeasurementResultResponse resultResp = execute(measurementAccess
 				.result(String.valueOf(id)));
 		List<MeasurementResult> results = resultResp.getResult();
 		for (MeasurementResult result : results) {
-
-			List<TracerouteData> sections = new ArrayList<TracerouteData>();
-
-			for (Output output : result.getOutputs()) {
+			Probe probe = execute(probeAccess.get(result.getProbeId()))
+					.getResult();
+			for (int i = result.getOutputs().size() - 1; i >= 0; i--) {
+				Output output = result.getOutputs().get(i);
 				if (validStep(output)) {
 					TracerouteOutput to = (TracerouteOutput) output;
-					TracerouteData summary = summarize(to.getData());
-					
-					sections.add(summary);
-					/*
-					TraceData section = new TraceData();
-					section.setToIp(summary.getFrom());
-					TraceData validStart = validStart(sections, summary);
-
-					if (validStart == null) {
-						section.setFromIp(result.getFrom());
-						section.setRtt(summary.getRoundTripTime());
-					} else {
-						section.setFromIp(validStart.getToIp());
-						section.setRtt(summary.getRoundTripTime().subtract(
-								validStart.getRttSource()));
+					TracerouteData sum = summarize(to.getData());
+					if (sum.getFrom().equals(result.getDstAddr())) {
+						retval.put(probe, sum);
+						continue;
 					}
-					section.setRttSource(summary.getRoundTripTime());
-					section.setSourceIp(result.getFrom());
-					sections.add(section);
-					*/
 				}
 			}
-			retval.put(execute(probeAccess.get(result.getProbeId()))
-					.getResult(), sections);
 		}
 		return retval;
 	}
@@ -81,7 +64,7 @@ public class TraceDataService extends DefaultHttpService {
 		this.probeAccess = probeAccess;
 	}
 
-	private static TraceData validStart(List<TraceData> exist,
+	protected static TraceData validStart(List<TraceData> exist,
 			TracerouteData data) {
 		for (int i = exist.size() - 1; i > 0; i--) {
 			if (exist.get(i).getRttSource().compareTo(data.getRoundTripTime()) <= 0)

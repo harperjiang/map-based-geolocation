@@ -66,14 +66,16 @@ public class GeoUtils {
 	 * http://en.wikipedia.org/wiki/Latitude#Length_of_a_degree_of_latitude
 	 * 
 	 * @param distance
+	 *            distance in meter
 	 * @param lat
-	 * @return
+	 *            latitude nearby
+	 * @return delta of latitude
 	 */
 	public static BigDecimal distanceToLat(BigDecimal distance, BigDecimal lat) {
 		BigDecimal factor = new BigDecimal(111132.954 - 559.822
 				* Math.cos(Math.toRadians(2 * lat.doubleValue())) + 1.175
 				* Math.cos(Math.toRadians(4 * lat.doubleValue())));
-		return distance.divide(factor, 10, BigDecimal.ROUND_HALF_UP);
+		return distance.divide(factor, 5, BigDecimal.ROUND_HALF_UP);
 	}
 
 	public static BigDecimal latToDist(BigDecimal lat, BigDecimal delta) {
@@ -88,19 +90,19 @@ public class GeoUtils {
 	 * http://en.wikipedia.org/wiki/Longitude#Length_of_a_degree_of_longitude
 	 * 
 	 * @param distance
-	 * @param longi
+	 * @param lat
 	 * @return
 	 */
 	public static BigDecimal distanceToLong(BigDecimal distance,
-			BigDecimal longi) {
+			BigDecimal lat) {
 		BigDecimal factor = new BigDecimal(Math.PI * 6378137
-				* Math.cos(Math.toRadians(longi.doubleValue())) / 180).abs();
-		return distance.divide(factor, 10, BigDecimal.ROUND_HALF_UP);
+				* Math.cos(Math.toRadians(lat.doubleValue())) / 180).abs();
+		return distance.divide(factor, 5, BigDecimal.ROUND_HALF_UP);
 	}
 
-	public static BigDecimal longToDist(BigDecimal longi, BigDecimal delta) {
+	public static BigDecimal longToDist(BigDecimal lat, BigDecimal delta) {
 		BigDecimal factor = new BigDecimal(Math.PI * 6378137
-				* Math.cos(Math.toRadians(longi.doubleValue())) / 180);
+				* Math.cos(Math.toRadians(lat.doubleValue())) / 180);
 		return delta.multiply(factor);
 	}
 

@@ -1,4 +1,4 @@
-package edu.clarkson.cs.mbg.map.tool;
+package edu.clarkson.cs.mbg.tool;
 
 import java.io.FileInputStream;
 import java.math.BigDecimal;
