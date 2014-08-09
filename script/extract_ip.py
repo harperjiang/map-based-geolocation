@@ -4,8 +4,8 @@ import subprocess
 
 reg_pattern = 'has address ([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3})'
 
-file = open('../data/university.tsv')
-output = open('../data/university_ip.tsv','w')
+file = open('../data/all_university_website.tsv')
+output = open('../data/all_university_ip.tsv','w')
 
 def parse(inputs):
     for line in inputs:
@@ -25,7 +25,11 @@ for line in file:
         continue
     cols = re.split('\t*',line)
     if len(cols) == 2: # With website info
-        host_lines = subprocess.check_output(['host',cols[1]]).decode("utf8").split('\n')
+        try:
+            host_lines = subprocess.check_output(['host',cols[1]]).decode("utf8").split('\n')
+        except Exception as e:
+            host_lines = e.output.decode("utf8").split('\n')
+        
         ip_addresses = parse(host_lines)
         if ip_addresses != None :
             output.write('\t'.join([cols[0],cols[1],ip_addresses])+'\n')
