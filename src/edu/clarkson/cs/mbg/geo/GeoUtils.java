@@ -4,6 +4,10 @@ import java.math.BigDecimal;
 
 public class GeoUtils {
 
+	static final BigDecimal TWO = new BigDecimal("2");
+
+	static final int PRECISION = 5;
+
 	/**
 	 * Calculate the angle between vector (first->second) and
 	 * vector(second->third). This method assume points are close and thus they
@@ -75,7 +79,7 @@ public class GeoUtils {
 		BigDecimal factor = new BigDecimal(111132.954 - 559.822
 				* Math.cos(Math.toRadians(2 * lat.doubleValue())) + 1.175
 				* Math.cos(Math.toRadians(4 * lat.doubleValue())));
-		return distance.divide(factor, 5, BigDecimal.ROUND_HALF_UP);
+		return distance.divide(factor, PRECISION, BigDecimal.ROUND_HALF_UP);
 	}
 
 	public static BigDecimal latToDist(BigDecimal lat, BigDecimal delta) {
@@ -96,7 +100,7 @@ public class GeoUtils {
 	public static BigDecimal distanceToLong(BigDecimal distance, BigDecimal lat) {
 		BigDecimal factor = new BigDecimal(Math.PI * 6378137
 				* Math.cos(Math.toRadians(lat.doubleValue())) / 180).abs();
-		return distance.divide(factor, 5, BigDecimal.ROUND_HALF_UP);
+		return distance.divide(factor, PRECISION, BigDecimal.ROUND_HALF_UP);
 	}
 
 	public static BigDecimal longToDist(BigDecimal lat, BigDecimal delta) {
@@ -121,6 +125,27 @@ public class GeoUtils {
 				+ longDist.pow(2).doubleValue()));
 	}
 
+	/**
+	 * Convert Distance to degree differences
+	 * 
+	 * @param near
+	 * @param distance
+	 * @return
+	 */
+	public static BigDecimal geodiff(GeoPoint near, BigDecimal distance) {
+		BigDecimal latdelta = GeoUtils.distanceToLat(distance, near.latitude);
+		BigDecimal longdelta = GeoUtils.distanceToLong(distance, near.latitude);
+		return latdelta.add(longdelta).divide(TWO, PRECISION,
+				BigDecimal.ROUND_HALF_UP);
+	}
+
+	/**
+	 * Get the overlap of two ranges
+	 * 
+	 * @param a
+	 * @param b
+	 * @return
+	 */
 	public static GeoRange overlap(GeoRange a, GeoRange b) {
 		GeoPoint newpoint = new GeoPoint(
 				max(a.start.latitude, b.start.latitude), max(a.start.longitude,

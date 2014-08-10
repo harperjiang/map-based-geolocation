@@ -15,7 +15,7 @@ public class DrawPoint implements DrawItem {
 	@Override
 	public void draw(Graphics2D g2d) {
 		g2d.setColor(Color.RED);
-		g2d.drawOval(point.x * DrawRangePanel.SCALE - POINT_RADIUS, point.y
+		g2d.fillOval(point.x * DrawRangePanel.SCALE - POINT_RADIUS, point.y
 				* DrawRangePanel.SCALE - POINT_RADIUS, 2 * POINT_RADIUS,
 				2 * POINT_RADIUS);
 	}

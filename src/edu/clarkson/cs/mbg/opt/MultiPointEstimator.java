@@ -12,13 +12,13 @@ import edu.clarkson.cs.clientlib.csdp.SparseMatrix;
 import edu.clarkson.cs.mbg.geo.GeoPoint;
 import edu.clarkson.cs.mbg.geo.GeoRange;
 
-public class SinglePointEstimator {
+public class MultiPointEstimator {
 
 	private List<DistConstraint> constraints;
 
 	private GeoRange range;
 
-	public SinglePointEstimator() {
+	public MultiPointEstimator() {
 		super();
 		this.constraints = new ArrayList<DistConstraint>();
 	}
@@ -52,26 +52,9 @@ public class SinglePointEstimator {
 		MatrixBlock rangeb = new MatrixBlock(MatrixBlock.TYPE_MATRIX,
 				context.rangeSlackSize);
 
-		BlockMatrix bm = new BlockMatrix(headerb, objectiveb, lowerb, upperb,
-				rangeb);
+		BlockMatrix bm = new BlockMatrix(headerb, objectiveb, lowerb, upperb, rangeb);
 
 		List<Constraint> cons = new ArrayList<Constraint>();
-
-		SparseBlock eyeHeader1 = new SparseBlock(1, context.headerSize);
-		eyeHeader1.fill(new int[] { 0 }, new int[] { 0 }, new double[] { 1 });
-		cons.add(new Constraint(
-				new SparseMatrix(context.matrixSize, eyeHeader1), 1));
-
-		SparseBlock eyeHeader2 = new SparseBlock(1, context.headerSize);
-		eyeHeader2.fill(new int[] { 1 }, new int[] { 1 }, new double[] { 1 });
-		cons.add(new Constraint(
-				new SparseMatrix(context.matrixSize, eyeHeader2), 1));
-
-		SparseBlock eyeHeader3 = new SparseBlock(1, context.headerSize);
-		eyeHeader3.fill(new int[] { 0, 1 }, new int[] { 0, 1 }, new double[] {
-				1, 1 });
-		cons.add(new Constraint(
-				new SparseMatrix(context.matrixSize, eyeHeader3), 2));
 
 		int distSlackCount = 0;
 		int lowerSlackCount = 0;

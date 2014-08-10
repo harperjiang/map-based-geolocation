@@ -27,6 +27,7 @@ import edu.clarkson.cs.clientlib.ripeatlas.model.ProbeSpec;
 import edu.clarkson.cs.clientlib.ripeatlas.model.TracerouteOutput;
 import edu.clarkson.cs.clientlib.ripeatlas.model.TracerouteTarget;
 import edu.clarkson.cs.mbg.map.dao.JpaRoadDao;
+import edu.clarkson.cs.mbg.topology.GraphService;
 import edu.clarkson.cs.mbg.tracedata.TraceDataService;
 import edu.clarkson.cs.mbg.tracedata.dao.JpaTraceDataDao;
 
@@ -91,6 +92,8 @@ public class MBGContextSet implements ContextSet {
 		traceDataService.setProbeAccess(ps);
 
 		BeanContext.get().put("traceDataService", traceDataService);
+		
+		BeanContext.get().put("graphService", new GraphService());
 	}
 
 }
