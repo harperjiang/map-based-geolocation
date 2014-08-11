@@ -1,4 +1,4 @@
-package edu.clarkson.cs.mbg;
+package edu.clarkson.cs.mbg.tracedata;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;

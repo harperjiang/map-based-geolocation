@@ -27,9 +27,9 @@ import edu.clarkson.cs.clientlib.ripeatlas.model.ProbeSpec;
 import edu.clarkson.cs.clientlib.ripeatlas.model.TracerouteOutput;
 import edu.clarkson.cs.clientlib.ripeatlas.model.TracerouteTarget;
 import edu.clarkson.cs.mbg.map.dao.JpaRoadDao;
+import edu.clarkson.cs.mbg.map.dao.JpaUniversityDao;
 import edu.clarkson.cs.mbg.topology.GraphService;
 import edu.clarkson.cs.mbg.tracedata.TraceDataService;
-import edu.clarkson.cs.mbg.tracedata.dao.JpaTraceDataDao;
 
 public class MBGContextSet implements ContextSet {
 
@@ -43,9 +43,13 @@ public class MBGContextSet implements ContextSet {
 		roadDao.setEntityManager(em);
 		BeanContext.get().put("roadDao", roadDao);
 
-		JpaTraceDataDao traceDataDao = new JpaTraceDataDao();
-		traceDataDao.setEntityManager(em);
-		BeanContext.get().put("traceDataDao", traceDataDao);
+		JpaUniversityDao universityDao = new JpaUniversityDao();
+		universityDao.setEntityManager(em);
+		BeanContext.get().put("universityDao", universityDao);
+
+		// JpaTraceDataDao traceDataDao = new JpaTraceDataDao();
+		// traceDataDao.setEntityManager(em);
+		// BeanContext.get().put("traceDataDao", traceDataDao);
 
 		RipeAtlasEnvironment env = new RipeAtlasEnvironment();
 		// Create HTTP Client
@@ -92,7 +96,7 @@ public class MBGContextSet implements ContextSet {
 		traceDataService.setProbeAccess(ps);
 
 		BeanContext.get().put("traceDataService", traceDataService);
-		
+
 		BeanContext.get().put("graphService", new GraphService());
 	}
 

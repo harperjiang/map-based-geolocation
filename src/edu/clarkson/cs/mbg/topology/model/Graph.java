@@ -57,6 +57,9 @@ public class Graph {
 	}
 
 	public void merge(Node remain, Node remove) {
+		if (!nodes.contains(remain) || !nodes.contains(remove)) {
+			return;
+		}
 		// Remove all the paths between remain and remove
 		paths.get(remain).remove(remove);
 		paths.get(remove).remove(remain);

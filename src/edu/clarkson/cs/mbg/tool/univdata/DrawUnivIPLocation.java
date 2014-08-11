@@ -34,5 +34,6 @@ public class DrawUnivIPLocation {
 		br.close();
 
 		frame.setVisible(true);
+		frame.repaint();
 	}
 }

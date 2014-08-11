@@ -6,7 +6,6 @@ import edu.clarkson.cs.mbg.geo.GeoPoint;
 import edu.clarkson.cs.mbg.geo.GeoRange;
 import edu.clarkson.cs.mbg.topology.GraphService;
 import edu.clarkson.cs.mbg.topology.model.Graph;
-import edu.clarkson.cs.mbg.topology.model.Node;
 import edu.clarkson.cs.mbg.tracedata.TraceDataService;
 
 public class MBGMain {
@@ -22,13 +21,13 @@ public class MBGMain {
 		TraceDataService tdService = BeanContext.get().get("traceDataService");
 		GraphService graphService = BeanContext.get().get("graphService");
 		// TODO Use RipeAtlas to create measurement
-		int measurementId = 1717329;
-		// int measurementId = 1717512;
+		// int measurementId = 1717329;
+		int measurementId = 1717512;
 
 		Graph traceGraph = tdService.getTraceGraph(measurementId);
-
-		traceGraph
-				.merge(new Node("72.230.153.211"), new Node("72.230.153.213"));
+		System.out.println(traceGraph.getEntrance().size());
+		// traceGraph
+		// .merge(new Node("72.230.153.211"), new Node("72.230.153.213"));
 		graphService.heavyduty(traceGraph);
 
 		return;

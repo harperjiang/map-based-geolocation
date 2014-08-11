@@ -1,4 +1,4 @@
-A.T. Still University of Health Sciences (AZ / MO)	www.atsu.edu	198.209.172.115	38.882	-92.402
+A.T. Still University of Health Sciences (MO)	www.atsu.edu	198.209.172.115	38.882	-92.402
 Abilene Christian University (TX)	www.acu.edu	150.252.8.96	32.466	-99.712
 Abraham Baldwin Agricultural College (GA)	www.abac.edu	142.4.12.84	40.218	-111.613
 Academy of Art University (CA)	www.academyart.edu	184.73.255.179	39.044	-77.488
@@ -33,7 +33,6 @@ Alliant International University (CA)	www.alliant.edu	50.23.242.90	32.93	-96.835
 Alma College (MI)	www.alma.edu	192.101.250.226	43.379	-84.667
 Alvernia University (PA)	athletics.alvernia.edu	74.205.103.185	29.489	-98.399
 Alverno College (WI)	www.alverno.edu	50.56.164.153	29.489	-98.399
-Ambassador University (TX) (closed spring 1997)	www.ambassador.edu	69.163.166.250	33.927	-117.861
 Amberton University (TX)	www.amberton.edu	207.193.80.2	32.876	-96.648
 American Academy of Art (IL)	www.aaart.edu	12.133.121.211	42.558	-88.001
 American College of Acupuncture & Oriental Medicine (TX)	www.acaom.edu	192.254.227.132	29.83	-95.474
@@ -176,7 +175,7 @@ East Central University (OK)	www.ecok.edu	198.11.7.250	34.806	-96.705
 East Stroudsburg State University of Pennsylvania (PA)	www.esu.edu	192.147.113.4	41.072	-75.128
 East Tennessee State University (TN)	www.etsu.edu	151.141.9.187	36.313	-82.354
 East Texas Baptist University (TX)	www.etbu.edu	74.50.126.5	27.939	-82.472
-East-West University (IL)	en.wikipedia.org	208.80.154.224	37.79	-122.394
+East-West University (IL)	www.eastwest.edu	166.63.4.131	39.9649	-83.1383
 Eastern Connecticut State University (CT)	www.easternct.edu	149.152.32.102	41.778	-72.703
 Eastern Florida State College (FL)	www.easternflorida.edu	169.139.190.36	28.386	-80.742
 Eastern Illinois University (IL)	www.eiu.edu	139.67.8.125	39.5	-88.158
@@ -592,9 +591,6 @@ Ohio State University–Mansfield (OH)	mansfield.osu.edu	140.254.112.210	39.988	
 Ohio State University–Marion (OH)	osumarion.osu.edu	140.254.112.210	39.988	-83.044
 Ohio State University–Newark (OH)	newark.osu.edu	164.107.27.218	40.087	-82.546
 Ohio University (OH)	www.ohio.edu	132.235.8.149	39.303	-82.083
-Ohio University–Eastern Campus	www.ohio.edu	132.235.8.149	39.303	-82.083
-Ohio University–Lancaster	www.ohio.edu	132.235.8.149	39.303	-82.083
-Ohio University–Zanesville (OH)	www.ohio.edu	132.235.8.149	39.303	-82.083
 Ohio Valley University (WV)	www.ovu.edu	198.1.99.79	40.234	-111.658
 Ohio Wesleyan University (OH)	www.owu.edu	72.3.240.116	29.489	-98.399
 Oklahoma Baptist University (OK)	www.okbu.edu	164.58.90.107	35.327	-96.925
@@ -695,7 +691,7 @@ Texas A&M University–Corpus Christi (TX)	www.tamucc.edu	64.71.82.16	27.702	-97
 Texas A&M University–Galveston (TX)	www.tamug.edu	165.95.48.8	29.581	-95.027
 Texas A&M University Health Science Center (TX)	medicine.tamhsc.edu	66.64.80.72	30.652	-96.341
 Texas A&M University–Kingsville (TX)	www.tamuk.edu	139.94.97.208	27.462	-97.844
-Texas A&M University–San Antonio (TX) (operates as branch of Texas A&M University–Kingsville)	en.wikipedia.org	208.80.154.224	37.79	-122.394
+Texas A&M University–San Antonio (TX)	www.tamusa.tamus.edu	96.46.160.122	29.3171	-98.5555
 Texas A&M University–Texarkana (TX)	tamut.edu	165.95.166.5	30.652	-96.341
 Texas Chiropractic College (TX)	www.txchiro.edu	192.186.239.67	33.612	-111.891
 Texas Christian University (TX)	www.tcu.edu	138.237.38.177	32.771	-97.292
@@ -758,9 +754,9 @@ Union Presbyterian Seminary (VA)	www.upsem.edu	72.167.13.11	33.612	-111.891
 Union Theological Seminary (NY)	www.utsnyc.edu	63.128.11.2	32.911	-79.86
 Union University (TN)	www.uu.edu	69.167.204.56	35.712	-88.702
 United States Air Force Academy (CO)	www.usafa.af.mil	107.14.41.128	38	-97
-United States Army Command & General Staff College (KS)	en.wikipedia.org	208.80.154.224	37.79	-122.394
+United States Army Command & General Staff College (KS)	www.cgsc.edu	143.84.167.173	31.5273	-110.3607
 United States Army War College (PA)	www.carlisle.army.mil	143.84.46.29	31.527	-110.361
-United States Coast Guard Academy (CT)	en.wikipedia.org	198.35.26.96	38	-97
+United States Coast Guard Academy (CT)	www.cga.edu	138.29.1.6	41.3452	-72.1088
 United States Merchant Marine Academy (NY)	www.usmma.edu	23.75.87.14	42.363	-71.084
 United States Military Academy (NY)	www.usma.edu	143.69.2.10	31.527	-110.361
 United States Naval Academy (MD)	www.usna.edu	136.160.88.139	38.974	-76.595
@@ -803,7 +799,7 @@ University of Alabama–Huntsville (AL)	www.uah.edu	146.229.1.10	34.734	-86.646
 University of Alaska System (AK)	www.alaska.edu	137.229.114.19	64.838	-147.716
 University of Alaska System (AK) Anchorage	www.uaf.edu	137.229.114.86	64.838	-147.716
 University of Alaska System (AK) Fairbanks	www.alaska.edu	137.229.114.19	64.838	-147.716
-University of Alaska System (AK) Southeast (Juneau)	www.uas.alaska.edu	137.229.218.103	64.838	-147.716
+University of Alaska System (AK) Southeast	www.uas.alaska.edu	137.229.218.103	64.838	-147.716
 University of Arizona (AZ)	www.arizona.edu	128.196.133.50	32.234	-110.95
 University of Arkansas (AR)	www.uark.edu	130.184.5.181	35.954	-93.98
 University of Arkansas–Fort Smith (AR)	uafs.edu	74.117.170.128	35.386	-94.399
@@ -976,7 +972,6 @@ Villa Maria College (NY)	www.villa.edu	162.159.245.217	37.77	-122.393
 Villanova University (PA)	www.villanova.edu	153.104.6.101	40.037	-75.349
 Vincennes University (IN)	www.vinu.edu	159.218.221.74	38.639	-87.528
 Virginia Commonwealth University (VA)	www.vcu.edu	128.172.30.162	37.554	-77.46
-Virginia Intermont College (VA) (closed summer 2014)	www.vic.edu	184.154.44.90	41.888	-87.637
 Virginia Military Institute (VA)	www.vmi.edu	144.75.4.112	37.802	-79.512
 Virginia Polytechnic Institute & State University (VA)	www.vt.edu	198.82.183.54	37.179	-80.352
 Virginia State University (VA)	www.vsu.edu	150.174.33.15	37.205	-77.393
@@ -1108,7 +1103,6 @@ Baldwin-Wallace College (OH)	www.bw.edu	192.150.115.38	41.367	-81.865
 Ball State University (IN)	cms.bsu.edu	147.226.7.60	40.202	-85.408
 Baker College (MI)	www.baker.edu	54.225.215.67	39.044	-77.488
 Baker University (KS)	www.bakeru.edu	198.248.68.21	38.804	-95.237
-Bangor Theological Seminary (ME) (closed 22 June 2013)	www.bts.edu	174.142.53.44	45.5	-73.583
 Bank Street College of Education (NY)	bankstreet.edu	149.70.120.31	40.801	-73.965
 Baptist Bible College (MO)	www.gobbc.edu	192.254.232.48	29.83	-95.474
 Baptist Bible College & Seminary (PA)	www.bbc.edu	64.106.241.238	40.797	-74.055
@@ -1296,7 +1290,6 @@ Chapman University (CA)	www.chapman.edu	192.77.116.204	33.785	-117.843
 Charles R. Drew University of Medicine & Science (CA)	www.cdrewu.edu	206.117.32.18	34.052	-118.244
 Charleston Southern University (SC)	www.csuniv.edu	74.205.15.216	32.777	-79.931
 Charter Oak State College (CT)	www.charteroak.edu	74.123.180.42	41.686	-72.731
-Chester College of New England (NH) (closed May 2012)	en.wikipedia.org	198.35.26.96	38	-97
 Chestnut Hill College (PA)	www.chc.edu	198.64.138.145	39.624	-104.874
 Cheyney University (PA)	www.cheyney.edu	209.41.186.158	39.616	-75.704
 The Chicago School of Professional Psychology (IL)	www.thechicagoschool.edu	209.117.242.162	38	-97
@@ -1334,7 +1327,7 @@ Claremont Consortium of Colleges (CA) Claremont McKenna College	www.claremont.ed
 Claremont Consortium of Colleges (CA) Harvey Mudd College	www.hmc.edu	67.205.20.198	33.927	-117.861
 Claremont Consortium of Colleges (CA) Keck Graduate Institute of Applied Life Sciences	www.kgi.edu	207.20.55.23	39.624	-104.874
 Claremont Consortium of Colleges (CA) Pitzer College	www.pitzer.edu	134.173.112.23	34.122	-117.714
-Claremont Consortium of Colleges (CA) Pomona College	en.wikipedia.org	208.80.154.224	37.79	-122.394
+Claremont Consortium of Colleges (CA) Pomona College	www.pomona.edu	134.173.71.77	34.122	-117.714
 Claremont Consortium of Colleges (CA) Scripps College	www.scrippscollege.edu	199.83.128.101	35.227	-80.843
 Claremont School of Theology (CA)	www.cst.edu	173.255.248.101	39.49	-74.477
 Clarion University of Pennsylvania (PA)	www.clarion.edu	209.250.203.50	41.176	-79.379
@@ -1384,7 +1377,6 @@ College of Saint Mary (NE)	www.csm.edu	192.203.211.36	41.239	-95.999
 College of Saint Scholastica (MN)	www.css.edu	143.110.1.200	46.849	-92.203
 College of Saints John Fisher & Thomas More (TX)	fishermore.edu	50.116.42.157	39.428	-74.496
 College of Southern Nevada (NV)	www.csn.edu	131.216.152.250	36.175	-115.137
-College of Visual Arts (MN) (closed 30 June 2013)	en.wikipedia.org	198.35.26.96	38	-97
 College of William and Mary (VA)	www.wm.edu	128.239.29.10	37.271	-76.708
 College of Wooster (OH)	www.wooster.edu	140.103.223.70	40.808	-81.973
 Colorado Christian University (CO)	www.ccu.edu	65.112.125.68	39.709	-105.091
@@ -1701,7 +1693,6 @@ Mount Saint Mary's College (CA)	www.msmc.la.edu	12.218.42.25	34.086	-118.49
 Mount Saint Mary's University (MD)	www.msmary.edu	216.230.103.23	38.978	-76.492
 Mount Vernon Nazarene University (OH)	www.mvnu.edu	206.21.202.80	40.381	-82.499
 Mount Washington College (NH)	www.mountwashington.edu	216.185.148.120	30.264	-97.714
-Mountain State University (WV) (closed 01 January 2013)	en.wikipedia.org	198.35.26.96	38	-97
 Muhlenberg College (PA)	www.muhlenberg.edu	192.104.181.135	40.615	-75.544
 Multnomah University (OR)	www.multnomah.edu	208.71.28.163	45.523	-122.676
 Murray State University (KY)	www.murraystate.edu	216.249.159.7	36.636	-88.283
@@ -1764,7 +1755,6 @@ Philadelphia College of Textiles & Science (PA)	www.philau.edu	66.227.95.82	40.0
 Philander Smith College (AR)	www.philander.edu	67.220.50.56	34.746	-92.29
 Phillips Graduate Institute (CA)	pgi.edu	50.63.215.82	33.612	-111.891
 Phillips Theological Seminary (OK)	ptstulsa.edu	162.253.151.232	38	-97
-Phillips University (OK) (closed July 1998)	www.pulf.org	66.71.244.34	33.752	-84.392
 Piedmont College (GA)	www.piedmont.edu	204.126.179.106	34.582	-83.57
 Pillar College (NJ)	www.pillar.edu	66.147.244.140	40.218	-111.613
 Pine Manor College (MA)	www.pmc.edu	64.89.44.97	38.65	-90.533
@@ -1777,7 +1767,7 @@ Point University (GA)	point.edu	216.235.205.114	32.911	-79.86
 Polk State College (FL)	www.polk.edu	208.93.166.97	28.04	-81.95
 Ponce School of Medicine & Health Sciences (PR)	www.psm.edu	136.145.244.155	18.024	-66.637
 Pontifical College Josephinum (OH)	www.pcj.edu	72.52.168.190	42.726	-84.636
-Pontificia Universidad Católica de Puerto Rico (PR)	en.wikipedia.org	198.35.26.96	38	-97
+Pontificia Universidad Católica de Puerto Rico (PR)	www.pucpr.edu	207.150.249.36	18.25	-66.5
 Portland State University (OR)	www.pdx.edu	131.252.115.23	45.507	-122.693
 Post University (CT)	www.post.edu	207.200.16.148	29.403	-97.579
 Prairie View A&M University (TX)	www.pvamu.edu	129.207.5.61	30.083	-95.986
@@ -1859,7 +1849,6 @@ Saint Norbert College (WI)	www.snc.edu	138.74.0.70	44.391	-88.031
 Saint Olaf College (MN)	wp.stolaf.edu	130.71.96.16	44.461	-93.201
 Saint Patrick's Seminary & University (CA)	www.stpatricksseminary.org	96.30.2.92	41.874	-87.65
 Saint Paul School of Theology (MO)	www.spst.edu	199.27.232.139	38.964	-94.714
-Saint Paul's College (VA) (closed 30 June 2013)	en.wikipedia.org	198.35.26.96	38	-97
 Saint Peter's University (NJ)	www.saintpeters.edu	76.12.234.155	39.616	-75.704
 Saint Petersburg College (FL)	www.spcollege.edu	66.194.105.1	38	-97
 Saint Thomas Aquinas College (NY)	www.stac.edu	184.168.41.1	33.612	-111.891
@@ -2013,7 +2002,7 @@ State University of New York System (NY) College at Plattsburgh	www.plattsburgh.
 State University of New York System (NY) College at Potsdam	www.potsdam.edu	137.143.111.247	44.661	-74.926
 State University of New York System (NY) College at Purchase	www.purchase.edu	199.79.170.97	41.039	-73.717
 State University of New York System (NY) College of Agriculture & Technology at Cobleskill	www.cobleskill.edu	137.36.32.71	42.704	-74.528
-State University of New York System (NY) College of Agriculture & Technology at Morrisville (Morrisville State College)	www.morrisville.edu	136.204.32.75	42.924	-75.657
+State University of New York System (NY) College of Agriculture & Technology at Morrisville	www.morrisville.edu	136.204.32.75	42.924	-75.657
 State University of New York System (NY) College of Environmental Science & Forestry	www.esf.edu	149.119.6.46	38	-97
 State University of New York System (NY) College of Optometry	www.sunyopt.edu	216.67.245.106	40.833	-74.131
 State University of New York System (NY) College of Technology at Canton	www.canton.edu	137.37.33.20	44.592	-75.106
