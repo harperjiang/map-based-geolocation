@@ -38,6 +38,9 @@ public class University implements EntityObject {
 	@Column(name = "longitude")
 	private BigDecimal longitude;
 
+	@Column(name = "remark")
+	private String remark;
+
 	public Integer getId() {
 		return id;
 	}
@@ -92,6 +95,14 @@ public class University implements EntityObject {
 
 	public void setLongitude(BigDecimal longitude) {
 		this.longitude = longitude;
+	}
+
+	public String getRemark() {
+		return remark;
+	}
+
+	public void setRemark(String remark) {
+		this.remark = remark;
 	}
 
 }
