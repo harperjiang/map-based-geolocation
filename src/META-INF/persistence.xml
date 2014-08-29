@@ -5,10 +5,13 @@
 		<class>edu.clarkson.cs.mbg.map.model.Waypoint</class>
 		<class>edu.clarkson.cs.mbg.map.model.City</class>
 		<class>edu.clarkson.cs.mbg.map.model.University</class>
+		<class>edu.clarkson.cs.mbg.pingmeasure.model.PingAnchor</class>
+		<class>edu.clarkson.cs.mbg.map.model.CityWebsite</class>
+		<class>edu.clarkson.cs.mbg.pingmeasure.model.PingProbe</class>
 		<properties>
 			<property name="eclipselink.jdbc.batch-writing" value="JDBC"/>
 			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
-			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://128.153.23.180:3306/us_map"/>
+			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/us_map"/>
 			<property name="javax.persistence.jdbc.user" value="root"/>
 			<property name="javax.persistence.jdbc.password" value="jieninan"/>
 			<property name="eclipselink.jdbc.cache-statements" value="false"/>

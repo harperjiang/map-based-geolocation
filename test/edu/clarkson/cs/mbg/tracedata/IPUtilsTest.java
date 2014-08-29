@@ -4,6 +4,8 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import edu.clarkson.cs.mbg.topology.IPUtils;
+
 public class IPUtilsTest extends IPUtils {
 
 	@Test

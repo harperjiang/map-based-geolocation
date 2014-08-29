@@ -16,9 +16,15 @@ import edu.clarkson.cs.clientlib.lang.proc.ProcessRunner;
 import edu.clarkson.cs.mbg.MBGContextSet;
 import edu.clarkson.cs.mbg.map.dao.UniversityDao;
 import edu.clarkson.cs.mbg.map.model.University;
-import edu.clarkson.cs.mbg.tracedata.IPUtils;
-import edu.clarkson.cs.persistence.Dao.Cursor;
+import edu.clarkson.cs.mbg.topology.IPUtils;
 
+/**
+ * Query IP address for the collected university websites, and report possible
+ * errors that require manual involvement.
+ * 
+ * @author harper
+ * 
+ */
 public class WashUniversityData {
 
 	public static void main(String[] args) throws Exception {
@@ -28,10 +34,9 @@ public class WashUniversityData {
 		UniversityDao univDao = BeanContext.get().get("universityDao");
 		IPInfoAccess ipAccess = BeanContext.get().get("ipinfoAccess");
 
-		Cursor<University> cursor = univDao.all();
-
-		while (cursor.hasNext()) {
-			University univ = cursor.next();
+		for (University univ : univDao.all()) {
+			if (!StringUtils.isEmpty(univ.getRemark()))
+				continue;
 
 			String website = univ.getWebsite();
 			List<String> ips = new ArrayList<String>();
@@ -47,14 +52,15 @@ public class WashUniversityData {
 					IPInfo info = ipAccess.getInfo(ip);
 					univ.setLatitude(info.getLatitude());
 					univ.setLongitude(info.getLongitude());
-					univDao.save(univ);
 				}
+				univ.setRemark("pass");
+				univDao.save(univ);
 			}
 		}
 	}
 
 	static Pattern addressPattern = Pattern
-			.compile("\\.+ has address ([0-9\\.]+)");
+			.compile(".+ has address ([0-9\\.]+)");
 
 	static Pattern aliasPattern = Pattern
 			.compile("([\\w0-9\\.]+) is an alias for ([\\w0-9\\-\\.]+)\\.");
@@ -62,7 +68,10 @@ public class WashUniversityData {
 	protected static String ipaddressWash(String website, List<String> ipresult)
 			throws InterruptedException, IOException {
 		ProcessRunner pr = new ProcessRunner("host", website);
-		pr.runAndWait();
+		int result = pr.runAndWait();
+		if (result != 0) {
+			return "error executing host";
+		}
 		List<String> outputs = pr.getOutput();
 		for (String output : outputs) {
 			Matcher matcher = addressPattern.matcher(output);
@@ -75,7 +84,7 @@ public class WashUniversityData {
 				// Check whether they have the same suffix
 				String[] addrs1 = matcher.group(1).split("\\.");
 				String[] addrs2 = matcher.group(2).split("\\.");
-				
+
 				if (!(addrs1[addrs1.length - 1]
 						.equals(addrs2[addrs2.length - 1]) && addrs1[addrs1.length - 2]
 						.equals(addrs2[addrs2.length - 2]))) {
@@ -94,7 +103,6 @@ public class WashUniversityData {
 		}
 		return null;
 	}
-
 
 	public static String join(List<String> strings) {
 		StringBuilder sb = new StringBuilder();
