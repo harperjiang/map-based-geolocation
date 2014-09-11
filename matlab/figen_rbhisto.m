@@ -1,5 +1,9 @@
-cdfplot(rbdenshisto);
-
+hold all
+cdfplot(ldmk_den_2km);
+cdfplot(ldmk_den_3km);
+cdfplot(ldmk_den_4km);
+%cdfplot(ldmk_den_5km);
 title('');
-xlabel('Landmark Density (count of landmarks in 200km x 200km)','FontSize',12);
+legend('400km','300km','200km');
+xlabel('Landmark Density within Radius','FontSize',15);
 ylabel('Cumulative Probability','FontSize',15);
