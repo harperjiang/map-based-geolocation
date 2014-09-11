@@ -13,6 +13,7 @@ import edu.clarkson.cs.mbg.map.dao.JpaCityDao;
 import edu.clarkson.cs.mbg.map.dao.JpaCityWebsiteDao;
 import edu.clarkson.cs.mbg.map.dao.JpaRoadDao;
 import edu.clarkson.cs.mbg.map.dao.JpaUniversityDao;
+import edu.clarkson.cs.mbg.pingmeasure.dao.JpaLandmarkDao;
 import edu.clarkson.cs.mbg.pingmeasure.dao.JpaPingAnchorDao;
 import edu.clarkson.cs.mbg.pingmeasure.dao.JpaPingProbeDao;
 import edu.clarkson.cs.mbg.topology.GraphService;
@@ -42,6 +43,10 @@ public class MBGContextSet implements ContextSet {
 		universityDao.setEntityManager(em);
 		BeanContext.get().put("universityDao", universityDao);
 
+		JpaLandmarkDao landmarkDao = new JpaLandmarkDao();
+		landmarkDao.setEntityManager(em);
+		BeanContext.get().put("landmarkDao", landmarkDao);
+		
 		JpaPingAnchorDao pingAnchorDao = new JpaPingAnchorDao();
 		pingAnchorDao.setEntityManager(em);
 		BeanContext.get().put("pingAnchorDao", pingAnchorDao);

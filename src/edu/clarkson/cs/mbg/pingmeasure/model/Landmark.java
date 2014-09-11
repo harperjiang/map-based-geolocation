@@ -9,9 +9,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import edu.clarkson.cs.persistence.EntityObject;
+
 @Entity
 @Table(name = "landmark")
-public class Landmark {
+public class Landmark implements EntityObject {
 	@Id
 	@Column(name = "id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
