@@ -2,6 +2,9 @@
 
 dist = 2;
 threshold = 20;
+
+median_error = [];
+
 for index = 1:1547
     
     center = target(:,index);
@@ -31,7 +34,7 @@ for index = 1:1547
     
     % Train neural network around the center point
     % Create a Fitting Network
-    hiddenLayerSize = 80;
+    hiddenLayerSize = 30;
     net = fitnet(hiddenLayerSize);
     
     % Choose Input and Output Pre/Post-Processing Functions
@@ -58,8 +61,8 @@ for index = 1:1547
     
     % Choose Plot Functions
     % For a list of all plot functions type: help nnplot
-    net.plotFcns = {'plotperform','plottrainstate','ploterrhist', ...
-        'plotregression', 'plotfit'};
+    % net.plotFcns = {'plotperform','plottrainstate','ploterrhist', ...
+    %    'plotregression', 'plotfit'};
     
     
     % Train the Network
@@ -68,7 +71,7 @@ for index = 1:1547
     % Test the Network
     outputs = net(inputs);
     errors = gsubtract(targets,outputs);
-    performance = perform(net,targets,outputs)
+    performance = perform(net,targets,outputs);
     
     % Recalculate Training, Validation and Test Performance
     trainTargets = targets .* tr.trainMask{1};
@@ -87,5 +90,8 @@ for index = 1:1547
     %figure, plotfit(net,inputs,targets)
     %figure, plotregression(targets,outputs)
     %figure, ploterrhist(errors)
+    
+    % Record the median error of each network
+    
 
 end
