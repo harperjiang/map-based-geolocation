@@ -8,6 +8,7 @@
 		<class>edu.clarkson.cs.mbg.pingmeasure.model.PingAnchor</class>
 		<class>edu.clarkson.cs.mbg.map.model.CityWebsite</class>
 		<class>edu.clarkson.cs.mbg.pingmeasure.model.PingProbe</class>
+		<class>edu.clarkson.cs.mbg.pingmeasure.model.Landmark</class>
 		<properties>
 			<property name="eclipselink.jdbc.batch-writing" value="JDBC"/>
 			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
