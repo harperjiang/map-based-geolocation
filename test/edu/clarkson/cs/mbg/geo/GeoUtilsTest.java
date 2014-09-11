@@ -1,5 +1,6 @@
 package edu.clarkson.cs.mbg.geo;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import java.math.BigDecimal;
@@ -40,5 +41,11 @@ public class GeoUtilsTest {
 		Double angle = GeoUtils
 				.angle(new GeoPoint(0, 0), new GeoPoint(-0.1, 1));
 		assertTrue(angle > 3 * Math.PI / 2 && angle < 2 * Math.PI);
+	}
+	
+	@Test
+	public void testLatToDist() {
+//		assertEquals(0, GeoUtils.longToDist(new BigDecimal("44.951488"), new BigDecimal("1.2819")));
+		assertEquals(0, GeoUtils.longToDist(new BigDecimal("28.1765"), new BigDecimal("1.2819")));
 	}
 }
