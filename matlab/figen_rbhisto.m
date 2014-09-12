@@ -1,9 +1,17 @@
+% This figure shows the probability of points has a surrounding less than a
+% given count
+
+load('rb_dens.mat');
+
 hold all
-cdfplot(ldmk_den_2km);
-cdfplot(ldmk_den_3km);
-cdfplot(ldmk_den_4km);
-%cdfplot(ldmk_den_5km);
+grid on
+omecdf(ldmk_den_2);
+omecdf(ldmk_den_3);
+omecdf(ldmk_den_4);
+omecdf(ldmk_den_5);
 title('');
-legend('400km','300km','200km');
-xlabel('Landmark Density within Radius','FontSize',15);
-ylabel('Cumulative Probability','FontSize',15);
+legend('200km','300km','400km','500km');
+xlabel('Landmark Count within Radius','FontSize',15);
+ylabel('Probability','FontSize',15);
+set(gca,'XTick',[0 50 100 200 300 400 500 700 1000]);
+xlim([0 1000]);
