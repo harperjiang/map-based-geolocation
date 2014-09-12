@@ -1,7 +1,6 @@
-function nets = train_pnnet(x,t, ite)
+function [nets,errors] = train_pnnet(x, t, ite)
     % Train a concurrent neural network 
-    nets = {};
-
+    nets = cell(ite);
     for i = 1 : ite
         inputs = x;
         targets = t;
@@ -44,7 +43,7 @@ function nets = train_pnnet(x,t, ite)
         % Test the Network
         outputs = net(inputs);
         errors = gsubtract(targets,outputs);
-        performance = perform(net,targets,outputs);
+        %performance = perform(net,targets,outputs);
 
         nets{i} = net;
     end

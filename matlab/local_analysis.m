@@ -16,7 +16,7 @@ for index = 1:tn
     round_input = [];
     round_target = [];
     
-    for sindex = 1:1547
+    for sindex = 1:tn
         if sindex == index
             continue;
         end

@@ -1,15 +1,7 @@
-function [output] = pnnet(nets, input)
-    % Output the average result from parallel mlp
-    sz = length(nets);
+function [output] = best_nnet(input, target, ite)
+    % Output the nnet with minimal median error
     
-    outputs = [];
-    
-    for i = 1:sz 
-        outputs = cat(3, outputs,nets{i}(input));
-    end
-    
-    % Calculate the median
-    [m,n,k] = size(outputs);
+    best_median = Inf;
     
     output = zeros([m,n]);
     for i = 1:m
