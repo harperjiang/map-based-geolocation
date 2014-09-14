@@ -1,5 +1,5 @@
 function omecdf( input )
-%PLOT_DENSITY Summary of this function goes here
+% 1 - CDF
 %   1 - cdf
     [f,x] = ecdf(input);
     f = 1-f;
