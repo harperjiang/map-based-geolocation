@@ -1,7 +1,7 @@
 % For each point, look for a dataset surrounding it
+clear;
 load('input.mat');
 dist = 3;
-threshold = 20;
 
 [tm,tn] = size(input);
 
@@ -24,15 +24,18 @@ for index = 1:tn
         current = target(:,sindex);
         
         if norm(current - center) <= dist
-            cat(2, round_input, input(:,sindex));
-            cat(2, round_target, target(:,sindex));
+            round_input = cat(2, round_input, input(:,sindex));
+            round_target = cat(2, round_target, target(:,sindex));
         end
     end
     
-    % Ignore input with to less data
     [m,n] = size(round_input);
+    
     data_size(1,index) = n;
-    net = best_nnet(round_input, round_target);
+    if n == 0
+       continue; 
+    end
+    net = best_nnet(round_input, round_target,30);
     err = norm(net(data)-center);
     errors(1,index) = err;
 end
