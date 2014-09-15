@@ -17,9 +17,8 @@ reg_weight = 1000;
 [tm,tn] = size(input);
 
 center_errors = zeros([1,tn]);
-region_errors = cell(tn);
+region_errors = 
 data_size = zeros([1,tn]);
-region_nets = cell(tn);
 
 for index = 1:tn
     data = input(:,index);
@@ -40,8 +39,6 @@ for index = 1:tn
        continue; 
     end
     net = train_best_mlp(round_input, round_target,30);
-    region_nets{index} = net;
     err = norm(net(data)-center);
-    center_errors(1,index) = err;
-    region_errors{index} = gsubtract(net(round_input),round_target);
+    errors(1,index) = err;
 end
