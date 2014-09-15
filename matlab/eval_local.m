@@ -2,7 +2,7 @@
 
 % For each point, look for a dataset surrounding it
 clear;
-load('data_input.mat');
+load('data_main.mat');
 load('data_regions.mat');
 dist = 3;
 
@@ -37,7 +37,7 @@ for index = 1:tn
     if n == 0
        continue; 
     end
-    net = best_nnet(round_input, round_target,30);
+    net = train_best_mlp(round_input, round_target,30);
     err = norm(net(data)-center);
     errors(1,index) = err;
     

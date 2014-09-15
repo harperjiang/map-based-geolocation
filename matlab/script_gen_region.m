@@ -15,8 +15,8 @@ for index = 1:tn
     
     regions{index,1} = center;
     % Collect data around the center point
-    round_input = [];
-    round_target = [];
+    round_input = data;
+    round_target = center;
     
     for sindex = 1:tn
         if sindex == index

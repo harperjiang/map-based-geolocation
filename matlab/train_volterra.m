@@ -1,4 +1,4 @@
-function [ beta, err ] = volterra_fit( x, t )
+function [ beta, errs ] = train_volterra( x, t )
 %VOLTERRA_FIT Summary of this function goes here
 %   Quadratic model
 
@@ -14,14 +14,14 @@ function [ beta, err ] = volterra_fit( x, t )
     
     xin = [ones([1,n]);x;x2];
     
-    A = (xin*xin')\xin;
+    A = xin';
     b = t';
+        
+    beta = (A'*A)\A'*b;
     
-    beta = A*b;
+    predict = (A * beta)';
     
-    predict = xin' * beta;
-    
-    err = t - predict';
+    errs = t - predict;
     return;
 end
 
