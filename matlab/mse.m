@@ -37,14 +37,18 @@ function perf = mse(net,varargin)
 % Function Info
 persistent INFO;
 if isempty(INFO), INFO = nnModuleInfo(mfilename); end
-if nargin == 0, perf = INFO; return; end
+if nargin == 0, perf = INFO 
+    return;
+end
 
 % NNET Backward Compatibility
 % WARNING - This functionality may be removed in future versions
 if ischar(net) && strcmp(net,'info')
-  perf = INFO; return
+  perf = INFO; 
+  return;
 elseif ischar(net) || ~(isa(net,'network') || isstruct(net))
-  perf = nnet7.performance_fcn(mfilename,net,varargin{:}); return
+  perf = nnet7.performance_fcn(mfilename,net,varargin{:}); 
+  return;
 end
 
 % Arguments
