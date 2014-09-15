@@ -40,8 +40,4 @@ for index = 1:tn
     net = train_best_mlp(round_input, round_target,30);
     err = norm(net(data)-center);
     errors(1,index) = err;
-    
-    % Todo This is apply quadratic
-    
-    
 end
