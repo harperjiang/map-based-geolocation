@@ -1,13 +1,10 @@
-load('data_mlp_ds_error.mat');
+clear;
+load('data_mlp_big_result.mat');
 
-big_data_size = [];
-big_errors = [];
+median_errors = zeros([length(center_errors) 1]);
 
-n = length(data_size);
-
-for i = 1 : n 
-    if data_size(i) > 100
-        big_data_size = [big_data_size data_size(i)];
-        big_errors = [big_errors errors(i)];
-    end
+for i = 1:length(center_errors) 
+    median_errors(i) = median(error_dist(region_errors{i}));
 end
+
+% Separate blocks

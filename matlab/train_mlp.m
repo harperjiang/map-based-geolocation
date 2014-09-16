@@ -4,9 +4,9 @@ function [net, errors, perf] = train_mlp( x, t )
 
 inputs = x;
 targets = t;
-
+[m,n] = size(x);
 % Create a Fitting Network
-hiddenLayerSize = 25;
+hiddenLayerSize = round(n*0.6);
 net = fitnet(hiddenLayerSize);
 
 % Choose Input and Output Pre/Post-Processing Functions
