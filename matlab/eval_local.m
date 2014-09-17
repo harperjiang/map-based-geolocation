@@ -45,3 +45,5 @@ for index = 1:tn
     center_errors(1,index) = err;
     region_errors{index} = gsubtract(net(round_input),round_target);
 end
+
+save('data_temp_eval_local_result.mat');
