@@ -6,7 +6,7 @@ reg = zeros([m,n]);
 
 for i = 1 : m
     minx = min(x(i,:));
-    reg(i,:) = gsubstract(x(i,:),minx);
+    reg(i,:) = x(i,:) - minx;
 end
 
 end
