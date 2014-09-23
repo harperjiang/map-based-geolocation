@@ -14,8 +14,8 @@ for i = 1 : n
     region_input = regions{i,2};
     region_target = regions{i,3};
     
-    %[rdim,rn] = size(region_input);
-    [rdim,rn] = size(unique(region_target','rows')');
+    [rdim,rn] = size(region_input);
+    %[rdim,rn] = size(unique(region_target','rows')');
     if rn <= 25 
         region_small_input = region_input;
         region_small_target = region_target;

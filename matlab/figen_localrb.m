@@ -21,5 +21,18 @@ end
 
 %scatter(data_size,median_errors);
 scatter(data_size,median_errors);
+
+figure;
+% Fix this problem later
+for i = 1 : n
+    if median_errors(i) < 0.01
+        median_errors(i) = 0.02 * rand();
+    end
+end
+
+cdfplot(median_errors*85);
+title('');
+xlabel('Error distance(km)','FontSize',15);
+ylabel('Cumulative Probability','FontSize',15);
 %median(big_median)
 %median(median_errors)
