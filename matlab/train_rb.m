@@ -1,12 +1,15 @@
-function [rb_net, error] = train_rb(x, t, nlp)
+function [rb_net, error] = train_rb(x, t, nlp,sc)
 
 if nargin < 3
     nlp = 1;
 end
+if nargin < 4
+    sc = 10;
+end
 
 [m,n] = size(x);
 eg = 0.0001; % sum-squared error goal
-sc = 1;    % spread constant
+%sc = 1;    % spread constant
 %nl = 2000;   % neuron limit
 nl = round(n*nlp);
 rb_net = newrb(x,t,eg,sc,nl);
