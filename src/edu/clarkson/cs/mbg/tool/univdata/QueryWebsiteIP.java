@@ -9,8 +9,8 @@ import java.util.Map.Entry;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import edu.clarkson.cs.clientlib.lang.proc.OutputHandler;
-import edu.clarkson.cs.clientlib.lang.proc.ProcessRunner;
+import edu.clarkson.cs.common.proc.OutputHandler;
+import edu.clarkson.cs.common.proc.ProcessRunner;
 
 public class QueryWebsiteIP {
 

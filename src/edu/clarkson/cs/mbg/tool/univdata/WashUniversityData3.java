@@ -5,7 +5,7 @@ import org.apache.commons.lang3.StringUtils;
 import edu.clarkson.cs.clientlib.ipinfo.IPInfoAccess;
 import edu.clarkson.cs.clientlib.ipinfo.IPInfoContextSet;
 import edu.clarkson.cs.clientlib.ipinfo.model.IPInfo;
-import edu.clarkson.cs.clientlib.lang.BeanContext;
+import edu.clarkson.cs.common.BeanContext;
 import edu.clarkson.cs.mbg.MBGContextSet;
 import edu.clarkson.cs.mbg.map.dao.UniversityDao;
 import edu.clarkson.cs.mbg.map.model.University;

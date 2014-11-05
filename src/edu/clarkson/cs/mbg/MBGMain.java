@@ -1,6 +1,6 @@
 package edu.clarkson.cs.mbg;
 
-import edu.clarkson.cs.clientlib.lang.BeanContext;
+import edu.clarkson.cs.common.BeanContext;
 import edu.clarkson.cs.mbg.geo.GeoDimension;
 import edu.clarkson.cs.mbg.geo.GeoPoint;
 import edu.clarkson.cs.mbg.geo.GeoRange;

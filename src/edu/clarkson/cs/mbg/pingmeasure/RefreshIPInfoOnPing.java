@@ -1,7 +1,7 @@
 package edu.clarkson.cs.mbg.pingmeasure;
 
 import edu.clarkson.cs.clientlib.ipinfo.IPInfoAccess;
-import edu.clarkson.cs.clientlib.lang.BeanContext;
+import edu.clarkson.cs.common.BeanContext;
 import edu.clarkson.cs.mbg.MBGContextSet;
 import edu.clarkson.cs.mbg.pingmeasure.dao.PingAnchorDao;
 import edu.clarkson.cs.mbg.pingmeasure.model.PingAnchor;

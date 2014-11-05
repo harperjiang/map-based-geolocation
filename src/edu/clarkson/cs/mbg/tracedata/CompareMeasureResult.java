@@ -1,6 +1,6 @@
 package edu.clarkson.cs.mbg.tracedata;
 
-import edu.clarkson.cs.clientlib.lang.BeanContext;
+import edu.clarkson.cs.common.BeanContext;
 import edu.clarkson.cs.mbg.MBGContextSet;
 
 public class CompareMeasureResult {

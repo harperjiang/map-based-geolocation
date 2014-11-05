@@ -2,9 +2,9 @@ package edu.clarkson.cs.mbg.pingmeasure;
 
 import java.text.MessageFormat;
 
-import edu.clarkson.cs.clientlib.lang.BeanContext;
 import edu.clarkson.cs.clientlib.ripeatlas.ProbeService;
 import edu.clarkson.cs.clientlib.ripeatlas.model.Probe;
+import edu.clarkson.cs.common.BeanContext;
 import edu.clarkson.cs.mbg.MBGContextSet;
 
 public class GetProbeLocation {

@@ -12,12 +12,12 @@ import org.apache.commons.beanutils.PropertyUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.Validate;
 
-import edu.clarkson.cs.clientlib.lang.BeanContext;
 import edu.clarkson.cs.clientlib.ripeatlas.api.MeasurementAccess;
 import edu.clarkson.cs.clientlib.ripeatlas.api.measurement.MeasurementGetResponse;
 import edu.clarkson.cs.clientlib.ripeatlas.api.measurement.MeasurementResultResponse;
 import edu.clarkson.cs.clientlib.ripeatlas.model.Measurement;
 import edu.clarkson.cs.clientlib.ripeatlas.model.MeasurementResult;
+import edu.clarkson.cs.common.BeanContext;
 import edu.clarkson.cs.mbg.MBGContextSet;
 import edu.clarkson.cs.mbg.pingmeasure.dao.PingProbeDao;
 import edu.clarkson.cs.mbg.pingmeasure.model.PingProbe;

@@ -13,7 +13,7 @@ import edu.clarkson.cs.clientlib.gsearch.GSearchAccess;
 import edu.clarkson.cs.clientlib.gsearch.GSearchContextSet;
 import edu.clarkson.cs.clientlib.gsearch.api.GSearchResponse;
 import edu.clarkson.cs.clientlib.gsearch.model.SearchResult;
-import edu.clarkson.cs.clientlib.lang.BeanContext;
+import edu.clarkson.cs.common.BeanContext;
 
 public class QueryUniversityWebsite {
 

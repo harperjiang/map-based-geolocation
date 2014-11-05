@@ -12,7 +12,7 @@ import java.util.regex.Pattern;
 
 import javax.persistence.EntityTransaction;
 
-import edu.clarkson.cs.clientlib.lang.BeanContext;
+import edu.clarkson.cs.common.BeanContext;
 import edu.clarkson.cs.mbg.MBGContextSet;
 import edu.clarkson.cs.mbg.map.dao.JpaUniversityDao;
 import edu.clarkson.cs.mbg.map.model.University;

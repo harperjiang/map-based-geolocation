@@ -4,11 +4,11 @@ import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
 
 import edu.clarkson.cs.clientlib.ipinfo.IPInfoContextSet;
-import edu.clarkson.cs.clientlib.lang.BeanContext;
-import edu.clarkson.cs.clientlib.lang.ContextSet;
 import edu.clarkson.cs.clientlib.ripeatlas.RipeAtlasContextSet;
 import edu.clarkson.cs.clientlib.ripeatlas.api.MeasurementAccess;
 import edu.clarkson.cs.clientlib.ripeatlas.api.ProbeAccess;
+import edu.clarkson.cs.common.BeanContext;
+import edu.clarkson.cs.common.ContextSet;
 import edu.clarkson.cs.mbg.map.dao.JpaCityDao;
 import edu.clarkson.cs.mbg.map.dao.JpaCityWebsiteDao;
 import edu.clarkson.cs.mbg.map.dao.JpaRoadDao;

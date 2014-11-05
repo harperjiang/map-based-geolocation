@@ -10,7 +10,7 @@ import edu.clarkson.cs.clientlib.gsearch.GSearchAccess;
 import edu.clarkson.cs.clientlib.gsearch.GSearchContextSet;
 import edu.clarkson.cs.clientlib.gsearch.model.SearchResponse;
 import edu.clarkson.cs.clientlib.ipinfo.IPInfoAccess;
-import edu.clarkson.cs.clientlib.lang.BeanContext;
+import edu.clarkson.cs.common.BeanContext;
 import edu.clarkson.cs.mbg.MBGContextSet;
 import edu.clarkson.cs.mbg.map.dao.CityWebsiteDao;
 import edu.clarkson.cs.mbg.map.model.CityWebsite;
